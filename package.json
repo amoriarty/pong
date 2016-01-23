@@ -1,0 +1,19 @@
+{
+  "name": "pong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pong.js",
+  "scripts": {
+    "test": "node pong.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amoriarty/pong.git"
+  },
+  "author": "alegent",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/amoriarty/pong/issues"
+  },
+  "homepage": "https://github.com/amoriarty/pong#readme"
+}
