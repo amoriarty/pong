@@ -1,11 +1,13 @@
 "use strict";
+//TODO FILET
+//TODO APPRENDRE A CENTRER LES ELEMENTS (BALLE, FILET ..)
 
 var canvas = CE
 	.defines("canvas")
 	.extend(Hit)
 	.ready(function () {
-	canvas.Scene.call("Pong");
-});
+		canvas.Scene.call("Pong");
+	});
 
 canvas.Scene.new({
 	name: "Pong",
@@ -37,6 +39,7 @@ canvas.Scene.new({
 			entity.el.fillStyle = color;
 			entity.el.fillRect(0, 0, width, height);
 			stage.append(entity.el);
+			return (entity);
 		}
 
 		_canvas.setSize("browser");
@@ -51,7 +54,26 @@ canvas.Scene.new({
 			"yellow");
 	},
 	render: function (stage) {
+		this.ball.move(0, -1);
+		this.ball.hit([this.upWall, this.downWall], function (state) {
+			if (state == "over") {
+				canvas.Scene.call("GameOver");
+			}
+		});
 		stage.refresh();
+	}
+});
+
+canvas.Scene.new({
+	name: "GameOver",
+	ready: function (stage) {
+		var _canvas = this.getCanvas();
+		var text = this.createElement();
+
+		text.font = "20px Arial";
+		text.fillStyle = "white";
+		text.fillText("GAME OVER !!!", (_canvas.width / 2), (_canvas.height / 2));
+		stage.append(text);
 	}
 });
 
