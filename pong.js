@@ -8,6 +8,7 @@ app.get("/", function (req, res) {
 
 app.use("/css", express.static("css"));
 app.use("/client", express.static("client"));
+app.use("/img", express.static("img"));
 
 app.listen('4242', function () {
 	console.log("Listening");

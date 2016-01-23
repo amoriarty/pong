@@ -3,12 +3,13 @@ body {
 	color: white;
 }
 
+/*
 #play_zone {
 	text-align: center;
 	display: block;
 	width: 80%;
 	padding: 50px 10%;
-	height: 450px;
+	max-height: 100%;
 }
 
 #canvas {
@@ -16,3 +17,4 @@ body {
 	width: 1000px;
 	height: 500px;
 }
+*/
