@@ -1,8 +1,9 @@
 Config = require "./configuration.json"
-Server = require "./src/Server.class"
+Server = require "./class/Server.class"
 
-app = new Server "#{Config.path}/views/pong.html"
-app.addStatic "client"
+# Server Configuration
+app = new Server "#{Config.path}/html/pong.html"
+app.addStatic "js"
 app.addStatic "css"
 app.addStatic "img"
 app.listen 4242, "Server ready !"
