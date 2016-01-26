@@ -4,7 +4,8 @@
   "description": "",
   "main": "pong.js",
   "scripts": {
-    "test": "node pong.js"
+    "test": "/usr/bin/coffee -cbm index.coffee",
+    "start": "/usr/bin/coffee -cb index.coffee"
   },
   "repository": {
     "type": "git",
