@@ -4,6 +4,5 @@ Server = require "./class/Server.class"
 # Server Configuration
 app = new Server "#{Config.path}/html/pong.html"
 app.addStatic "js"
-app.addStatic "css"
 app.addStatic "img"
 app.listen 4242, "Server ready !"

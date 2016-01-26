@@ -15,7 +15,7 @@ canvas.Scene.new({
 	materials: {
 		images: {
 			"bar_full": {
-				path: "/img/bar_full.jpg",
+				path: "/img/loading.jpg",
 				index: 0
 			},
 			"ball": "/img/ball.png",
@@ -72,7 +72,7 @@ canvas.Scene.new({
 		var text = this.createElement();
 
 		text.font = "20px Arial";
-		text.fillStyle = "white";
+		text.fillStyle = "black";
 		text.fillText("GAME OVER !!!", (_canvas.width / 2), (_canvas.height / 2));
 		stage.append(text);
 	}
