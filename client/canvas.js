@@ -1,6 +1,7 @@
 "use strict";
 //TODO FILET
 //TODO APPRENDRE A CENTRER LES ELEMENTS (BALLE, FILET ..)
+//TODO RESIZE
 
 var canvas = CE
 	.defines("canvas")
@@ -54,11 +55,11 @@ canvas.Scene.new({
 			"yellow");
 	},
 	render: function (stage) {
-		this.ball.move(0, -1);
 		this.ball.hit([this.upWall, this.downWall], function (state) {
 			if (state == "over") {
 				canvas.Scene.call("GameOver");
 			}
+			this.ball.move(0, -1);
 		});
 		stage.refresh();
 	}
