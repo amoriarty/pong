@@ -27,10 +27,13 @@ class Player
 				if @position.top - 5 >= @limit.top
 					@position.top -= 5
 					@$player.css "top", @position.top
+					return true
 			when "DOWN"
 				if @position.top + 5 <= @limit.bottom
 					@position.top += 5
 					@$player.css "top", @position.top
+					return true
+		return false
 
 jQuery ->
 	one = new Player "player-1"
