@@ -20,5 +20,5 @@ class Player
 						@$player.css "top", @position.top
 
 jQuery ->
-	player = new Player "player"
+	player = new Player "player-1"
 	player.configureKeyboard()
