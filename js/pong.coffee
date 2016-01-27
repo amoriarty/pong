@@ -10,11 +10,11 @@ class Player
 	configureKeyboard: ->
 		$(document).keypress (touch) =>
 			switch touch.key
-				when "ArrowUp"
+				when "ArrowUp", "w", "z"
 					if @position.top - 5 >= @limit.top
 						@position.top -= 5
 						@$player.css "top", @position.top
-				when "ArrowDown"
+				when "ArrowDown", "s"
 					if @position.top + 5 <= @limit.bottom
 						@position.top += 5
 						@$player.css "top", @position.top
