@@ -1,0 +1,15 @@
+-> pong.host.fr
+	Si !COOKIE
+		-> /login
+		# Permet de definir le nom d'utilisateur, et accepter l'utilisation de cookie.
+		# Le mode online pourra completer cette page
+	Sinon
+		->/
+		# Renvois sur la page principal du jeu.
+			- Dessine la map.
+			- Affiche le menu
+			# Permet de faire le choix du mode.
+			# Le mode online pourra comprendre d'autre mode de jeux (2 VS 2)
+				# 1 VS 1
+				# 1 VS BOT
+				# 2 VS 2 BOT

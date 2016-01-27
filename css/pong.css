@@ -1,0 +1,23 @@
+body {
+	background-color: #666666;
+}
+
+#map {
+	background-color: #000000;
+	width: 720px;
+	height: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	border: solid 5px #660000;
+}
+
+.player {
+	position: absolute;
+	background-color: #FFFFFF;
+	width: 10px;
+	height: 90px;
+}
+
+#player {
+	margin-left: 10px;
+}
