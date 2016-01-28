@@ -35,10 +35,8 @@ class Player
 
 	moveInt: ->
 		setInterval =>
-			if (@direction.up)
-				@move "UP"
-			if (@direction.down)
-				@move "DOWN"
+			if (@direction.up) then @move "UP"
+			if (@direction.down) then @move "DOWN"
 		, 10
 
 	move: (direction) ->
