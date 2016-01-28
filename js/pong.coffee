@@ -6,43 +6,40 @@ class Player
 			top: @position.top
 			bottom: @position.top + $("#map").height() - (@$player.height() - 5)
 		}
+		@direction = {
+			up: false
+			down: false
+		}
+		@moveInt()
 
-	###
-	configureKeyboard: (panel) ->
-		touch = []
-		switch panel
-			when "LEFT"
-				$(document).keydown (event) =>
-					switch event.key
-						when "w", "z"
-							touch.push event.key
-							@move "UP"
-						when "s"
-							touch.push event.key
-							@move "DOWN"
-			when "RIGHT"
-				$(document).keydown (event) =>
-					switch event.key
-						when "ArrowUp"
-							touch.push event.key
-							@move "UP"
-						when "ArrowDown"
-							touch.push event.key
-							@move "DOWN"
-
-	###
 	configureKeyboard: (panel) ->
 		switch panel
 			when "LEFT"
-				$(document).keypress (touch) =>
+				$(document).keydown (touch) =>
 					switch touch.key
-						when "w", "z" then @move("UP")
-						when "s" then @move("DOWN")
+						when "w", "z" then @direction.up = true
+						when "s" then @direction.down = true
+				$(document).keyup (touch) =>
+					switch touch.key
+						when "w", "z" then @direction.up = false
+						when "s" then @direction.down = false
 			when "RIGHT"
-				$(document).keypress (touch) =>
+				$(document).keydown (touch) =>
 					switch touch.key
-						when "ArrowUp" then @move("UP")
-						when "ArrowDown" then @move("DOWN")
+						when "ArrowUp" then @direction.up = true
+						when "ArrowDown" then @direction.down = true
+				$(document).keyup (touch) =>
+					switch touch.key
+						when "ArrowUp" then @direction.up = false
+						when "ArrowDown" then @direction.down = false
+
+	moveInt: ->
+		setInterval =>
+			if (@direction.up)
+				@move "UP"
+			if (@direction.down)
+				@move "DOWN"
+		, 10
 
 	move: (direction) ->
 		switch direction
@@ -50,13 +47,10 @@ class Player
 				if @position.top - 5 >= @limit.top
 					@position.top -= 5
 					@$player.css "top", @position.top
-					return true
 			when "DOWN"
 				if @position.top + 5 <= @limit.bottom
 					@position.top += 5
 					@$player.css "top", @position.top
-					return true
-		return false
 
 jQuery ->
 	one = new Player "player-1"
