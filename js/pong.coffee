@@ -7,6 +7,30 @@ class Player
 			bottom: @position.top + $("#map").height() - (@$player.height() - 5)
 		}
 
+	###
+	configureKeyboard: (panel) ->
+		touch = []
+		switch panel
+			when "LEFT"
+				$(document).keydown (event) =>
+					switch event.key
+						when "w", "z"
+							touch.push event.key
+							@move "UP"
+						when "s"
+							touch.push event.key
+							@move "DOWN"
+			when "RIGHT"
+				$(document).keydown (event) =>
+					switch event.key
+						when "ArrowUp"
+							touch.push event.key
+							@move "UP"
+						when "ArrowDown"
+							touch.push event.key
+							@move "DOWN"
+
+	###
 	configureKeyboard: (panel) ->
 		switch panel
 			when "LEFT"
@@ -19,7 +43,6 @@ class Player
 					switch touch.key
 						when "ArrowUp" then @move("UP")
 						when "ArrowDown" then @move("DOWN")
-
 
 	move: (direction) ->
 		switch direction
