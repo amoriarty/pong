@@ -7,11 +7,12 @@ jQuery ->
 
 	# RECUPERATION DU DOM DU JEUX
 	$pong = $("#pong")
+	position = $pong.position()
 
 	# CALCUL DES LIMITES DU TERRAIN
 	limit = {
-		top: $pong.position().top
-		bottom: $pong.position().top + $pong.height() - $(".player").height() + Math.round parseFloat $pong.css "border-bottom-width"
+		top: position.top
+		bottom: position.top + $pong.height() - $(".player").height() + Math.round parseFloat $pong.css "border-bottom-width"
 	}
 
 	# INITIALISATION PLAYER 1

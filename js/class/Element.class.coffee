@@ -9,4 +9,3 @@ class Element
 				width: @$element.width()
 				height: @$element.height()
 			}
-			position = undefined
