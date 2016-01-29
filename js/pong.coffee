@@ -10,3 +10,6 @@ jQuery ->
 	# INITIALISATION PLAYER 2
 	two = new Player "player-4"
 	two.configureKeyboard "RIGHT"
+
+	#ELEMENT
+	map = new Element "pong"

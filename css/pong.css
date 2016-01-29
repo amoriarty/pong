@@ -1,30 +1,33 @@
 body {
-	background-color: #666666;
+	background-color: #666666; /* FOND DE LA PAGE */
 }
 
-#map {
-	background-color: #000000;
-	width: 720px;
+/* TODO PLACEMENT DES ELEMENTS EN JQUERY OU SASS POUR RESPONSIVITE */
+
+#pong {
+	background-color: #000000; /* FOND DU PONG */
+	width: 720px; /* Taille du pong */
 	height: 400px;
-	margin-left: auto;
+	margin-left: auto; /* CENTRE LE PONG PAR RAPPORT A LA PAGE */
 	margin-right: auto;
-	border: solid 5px #FFFFFF;
+	border: solid 5px #FFFFFF; /* DEFINITION DE LA BORDURE ET DE SA COULEUR */
 }
 
 #filet {
-	background-color: #FFFFFF;
-	width: 10px;
+	background-color: #FFFFFF; /* COULEUR DU FILET */
+	width: 10px; /* TAILLE DU FILET */
 	height: 400px;
-	margin-left: 355px;
+	margin-left: 355px; /* CENTRAGE DU FILET PAR RAPPORT AU PONG */
 }
 
-.player {
+.player { /* DEFINITION D'UN ELEMENT PLAYER */
 	position: absolute;
 	background-color: #FFFFFF;
 	width: 10px;
 	height: 90px;
 }
 
+/* POSITION DES 4 PLAYER */
 #player-1 {
 	margin-left: 10px;
 }

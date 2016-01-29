@@ -4,7 +4,7 @@ class Player
 		@position = @$player.position()
 		@limit = {
 			top: @position.top
-			bottom: @position.top + $("#map").height() - (@$player.height() - 5)
+			bottom: @position.top + $("#pong").height() - (@$player.height() - 5)
 		}
 		@direction = {
 			up: false
