@@ -1,16 +1,11 @@
 class Player extends Element
-	constructor: (id) ->
+	constructor: (id, @limit) ->
 		super id
-		@limit = {
-			top: @position.x
-			# TODO PRENDRE EN COMPTE LA BORDURE (EN DUR DANS LE CODE POUR L'INSTANT)
-			bottom: @position.x + $("#pong").height() - (@$element.height() - 5)
-		}
+		@moveInt()
 		@direction = {
 			up: false
 			down: false
 		}
-		@moveInt()
 
 	configureKeyboard: (panel) ->
 		switch panel
@@ -33,19 +28,21 @@ class Player extends Element
 						when "ArrowUp" then @direction.up = false
 						when "ArrowDown" then @direction.down = false
 
+	# TODO REGLAGE DYNAMIQUE DE L'INTERVAL
 	moveInt: ->
 		setInterval =>
 			if (@direction.up) then @move "UP"
 			if (@direction.down) then @move "DOWN"
 		, 10
 
+	# TODO REGLAGE DYNAMIQUE DU NOMBRE DE PIXEL PAR DEPLACEMENT
 	move: (direction) ->
 		switch direction
 			when "UP"
-				if @position.x - 5 >= @limit.top
+				if @position.x - 5 > @limit.top
 					@position.x -= 5
 					@$element.css "top", @position.x
 			when "DOWN"
-				if @position.x + 5 <= @limit.bottom
+				if @position.x + 5 < @limit.bottom
 					@position.x += 5
 					@$element.css "top", @position.x

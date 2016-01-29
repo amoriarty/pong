@@ -9,6 +9,7 @@ class Element
 				width: @$element.width()
 				height: @$element.height()
 			}
+			position = undefined
 
 	newElement: (x, y, w, h) ->
 		@position = {

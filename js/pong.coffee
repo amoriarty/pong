@@ -3,14 +3,20 @@ jQuery ->
 	$("#player-2").css "display", "none"
 	$("#player-3").css "display", "none"
 
+	# RECUPERATION DU DOM DU JEUX
+	$pong = $("#pong")
+
+	# CALCUL DES LIMITES DU TERRAIN
+	limit = {
+		top: $pong.position().top
+		bottom: $pong.position().top + $pong.height() - $(".player").height() + Math.round parseFloat $pong.css "border-bottom-width"
+	}
+
 	# INITIALISATION PLAYER 1
-	one = new Player "player-1"
+	one = new Player "player-1", limit
 	one.configureKeyboard "LEFT"
 
 	# INITIALISATION PLAYER 2
-	two = new Player "player-4"
+	two = new Player "player-4", limit
 	two.configureKeyboard "RIGHT"
-
-	#ELEMENT
-	#map = new Element "pong"
 
