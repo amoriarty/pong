@@ -39,10 +39,10 @@ class Player extends Element
 	move: (direction) ->
 		switch direction
 			when "UP"
-				if @position.x - 5 > @limit.top
-					@position.x -= 5
-					@$element.css "top", @position.x
+				if @position.top - 5 > @limit.top
+					@position.top -= 5
+					@$element.css "top", @position.top
 			when "DOWN"
-				if @position.x + 5 < @limit.bottom
-					@position.x += 5
-					@$element.css "top", @position.x
+				if @position.top + 5 < @limit.bottom
+					@position.top += 5
+					@$element.css "top", @position.top

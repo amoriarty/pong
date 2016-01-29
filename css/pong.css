@@ -20,26 +20,16 @@ body {
 	margin-left: 355px; /* CENTRAGE DU FILET PAR RAPPORT AU PONG */
 }
 
-.player { /* DEFINITION D'UN ELEMENT PLAYER */
+#ball {
+	background-color: #ffc520; /* COULEUR DE LA BALLE */
 	position: absolute;
+	width: 15px; /* DIMENSION DE LA BALLE */
+	height: 15px;
+}
+
+.player { /* DEFINITION D'UN ELEMENT PLAYER */
 	background-color: #FFFFFF;
+	position: absolute;
 	width: 10px;
 	height: 90px;
-}
-
-/* POSITION DES 4 PLAYER */
-#player-1 {
-	margin-left: 10px;
-}
-
-#player-2 {
-	margin-left: 172px;
-}
-
-#player-3 {
-	margin-left: 532px;
-}
-
-#player-4 {
-	margin-left: 700px;
 }

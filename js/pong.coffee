@@ -1,7 +1,8 @@
 jQuery ->
-	# EFFECEMENT PLAYER 2 ET 3
-	$("#player-2").css "display", "none"
-	$("#player-3").css "display", "none"
+	# EFFECEMENT PLAYER 2 ET 3 + BALLE TEMPS DE TEST
+	#$("#player-2").css "display", "none"
+	#$("#player-3").css "display", "none"
+	$("#ball").css "display", "none"
 
 	# RECUPERATION DU DOM DU JEUX
 	$pong = $("#pong")
@@ -20,3 +21,8 @@ jQuery ->
 	two = new Player "player-4", limit
 	two.configureKeyboard "RIGHT"
 
+	###
+	# INITIALISATION DE LA BALLE
+	ball = new Ball "ball"
+	ball.setService(one)
+	###

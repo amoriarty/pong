@@ -4,17 +4,9 @@ class Element
 			@$element = $("##{id}")
 			position = @$element.position()
 			@position = {
-				x: position.top
-				y: position.left
+				top: position.top
+				left: position.left
 				width: @$element.width()
 				height: @$element.height()
 			}
 			position = undefined
-
-	newElement: (x, y, w, h) ->
-		@position = {
-			x: x
-			y: y
-			width: w
-			height: h
-		}
