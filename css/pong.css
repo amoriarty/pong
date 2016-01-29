@@ -6,7 +6,7 @@ body {
 
 #pong {
 	background-color: #000000; /* FOND DU PONG */
-	width: 720px; /* Taille du pong */
+	width: 720px; /* DIMENSION DU PONG */
 	height: 400px;
 	margin-left: auto; /* CENTRE LE PONG PAR RAPPORT A LA PAGE */
 	margin-right: auto;
@@ -15,7 +15,7 @@ body {
 
 #filet {
 	background-color: #FFFFFF; /* COULEUR DU FILET */
-	width: 10px; /* TAILLE DU FILET */
+	width: 10px; /* DIMENSION DU FILET */
 	height: 400px;
 	margin-left: 355px; /* CENTRAGE DU FILET PAR RAPPORT AU PONG */
 }
