@@ -1,10 +1,10 @@
-class Player
+class Player extends Element
 	constructor: (id) ->
-		@$player = $("##{id}")
-		@position = @$player.position()
+		super id
 		@limit = {
-			top: @position.top
-			bottom: @position.top + $("#pong").height() - (@$player.height() - 5)
+			top: @position.x
+			# TODO PRENDRE EN COMPTE LA BORDURE (EN DUR DANS LE CODE POUR L'INSTANT)
+			bottom: @position.x + $("#pong").height() - (@$element.height() - 5)
 		}
 		@direction = {
 			up: false
@@ -42,10 +42,10 @@ class Player
 	move: (direction) ->
 		switch direction
 			when "UP"
-				if @position.top - 5 >= @limit.top
-					@position.top -= 5
-					@$player.css "top", @position.top
+				if @position.x - 5 >= @limit.top
+					@position.x -= 5
+					@$element.css "top", @position.x
 			when "DOWN"
-				if @position.top + 5 <= @limit.bottom
-					@position.top += 5
-					@$player.css "top", @position.top
+				if @position.x + 5 <= @limit.bottom
+					@position.x += 5
+					@$element.css "top", @position.x

@@ -12,4 +12,5 @@ jQuery ->
 	two.configureKeyboard "RIGHT"
 
 	#ELEMENT
-	map = new Element "pong"
+	#map = new Element "pong"
+
