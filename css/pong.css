@@ -2,8 +2,6 @@ body {
 	background-color: #666666; /* FOND DE LA PAGE */
 }
 
-/* TODO PLACEMENT DES ELEMENTS EN JQUERY OU SASS POUR RESPONSIVITE */
-
 #pong {
 	background-color: #000000; /* FOND DU PONG */
 	width: 720px; /* DIMENSION DU PONG */

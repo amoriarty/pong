@@ -1,6 +1,7 @@
 class Player extends Element
-	constructor: (id, @pong) ->
+	constructor: (id, @pong, place) ->
 		super id
+		@setPlayer place
 		@moveInt()
 		@direction = {
 			up: false
@@ -9,6 +10,11 @@ class Player extends Element
 
 	setPlayer: (place) ->
 		@position.top += @pong.position.height / 2 - @position.height / 2
+		switch place
+			when 1 then @position.left += 1.38 * @pong.position.width / 100
+			when 2 then @position.left += 23.95 * @pong.position.width / 100
+			when 3 then @position.left += 73.88 * @pong.position.width / 100
+			when 4 then @position.left += 97.22 * @pong.position.width / 100
 		@refreshPosition()
 
 	configureKeyboard: (panel) ->
