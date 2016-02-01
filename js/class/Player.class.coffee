@@ -1,11 +1,15 @@
 class Player extends Element
-	constructor: (id, @limit) ->
+	constructor: (id, @pong) ->
 		super id
 		@moveInt()
 		@direction = {
 			up: false
 			down: false
 		}
+
+	setPlayer: (place) ->
+		@position.top += @pong.position.height / 2 - @position.height / 2
+		@refreshPosition()
 
 	configureKeyboard: (panel) ->
 		switch panel
@@ -39,10 +43,12 @@ class Player extends Element
 	move: (direction) ->
 		switch direction
 			when "UP"
-				if @position.top - 5 > @limit.top
+				if @position.top - 5 > @pong.limit.top
 					@position.top -= 5
-					@$element.css "top", @position.top
+					@refreshPosition()
+					#@$element.css "top", @position.top
 			when "DOWN"
-				if @position.top + 5 < @limit.bottom
+				if @position.top + 5 < @pong.limit.bottom
 					@position.top += 5
-					@$element.css "top", @position.top
+					@refreshPosition()
+					#@$element.css "top", @position.top
