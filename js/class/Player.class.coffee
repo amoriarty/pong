@@ -7,6 +7,7 @@ class Player extends Element
 			up: false
 			down: false
 		}
+		@score = 0
 
 	setPlayer: (place) ->
 		@position.top += @pong.position.height / 2 - @position.height / 2
@@ -52,9 +53,7 @@ class Player extends Element
 				if @position.top - 5 > @pong.limit.top
 					@position.top -= 5
 					@refreshPosition()
-					#@$element.css "top", @position.top
 			when "DOWN"
 				if @position.top + 5 < @pong.limit.bottom
 					@position.top += 5
 					@refreshPosition()
-					#@$element.css "top", @position.top
