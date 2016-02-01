@@ -1,7 +1,7 @@
 class Player extends Element
-	constructor: (id, @pong, place) ->
+	constructor: (id, @pong, @place) ->
 		super id
-		@setPlayer place
+		@setPlayer @place
 		@moveInt()
 		@direction = {
 			up: false

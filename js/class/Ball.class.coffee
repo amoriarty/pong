@@ -15,17 +15,7 @@ class Ball extends Element
 	setService: (player) ->
 		if player instanceof Player
 			@position.top = player.position.top + player.position.height / 2 - @position.height / 2
-			if player.position.left < @pong.position.left + @pong.position.width / 2
-				@position.left = player.position.left + player.position.width
-			else
-				@position.left = player.position.left - @position.width
+			switch player.place
+				when 1, 2 then @position.left = player.position.left + player.position.width
+				when 3, 4 then @position.left = player.position.left - @position.width
 			@refreshPosition()
-			$(document).bind "keydown", (touch) =>
-				if touch.key == ' '
-					@service()
-
-	service: ->
-		if @position.left < @pong.position.width / 2
-			@parameter.direction.x = 1
-		else
-			@parameter.direction.x = -1

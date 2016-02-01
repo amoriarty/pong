@@ -22,4 +22,4 @@ jQuery ->
 
 	# INITIALISATION DE LA BALLE
 	ball = new Ball "ball", pong
-	ball.setService two
+	ball.setService one
