@@ -16,7 +16,7 @@ class Game
 		# CALCUL DES LIMITES DU TERRAIN
 		@pong.limit = {
 			top: @pong.position.top
-			bottom: @pong.position.top + @pong.position.height - $(".player").height() + Math.round parseFloat @pong.$element.css "border-bottom-width"
+			bottom: @pong.position.top + @pong.position.height + Math.round parseFloat @pong.$element.css "border-bottom-width"
 		}
 
 		# INITIALISATION PLAYER 1
@@ -37,6 +37,7 @@ class Game
 			if touch.key is ' ' and @game_statue is false
 				@game_statue = true
 				@ball.direction.x = 1
+				@ball.direction.y = 1
 				@start_game()
 
 	stop_game: ->
@@ -55,6 +56,10 @@ class Game
 			@collision @ball, player, =>
 				@ball.direction.x *= -1
 
+		# COLLISION BORDURE HAUT ET BAS
+		@limit_collision @ball, =>
+			@ball.direction.y *= -1
+
 	collision: (elem1, elem2, callback) ->
 		# TODO SYSTEM DE COLLISION DOESN'T WORK !
 		if elem1 instanceof Element and elem2 instanceof Element
@@ -63,3 +68,9 @@ class Game
 				and elem1.position.left + elem1.position.width >= elem2.position.left \
 				and elem1.position.left <= elem2.position.left + elem2.position.width
 							callback()
+
+	limit_collision: (elem, callback) =>
+		if elem instanceof Element
+			if elem.position.top <= @pong.limit.top \
+				or elem.position.top + elem.position.height >= @pong.limit.bottom
+					callback()

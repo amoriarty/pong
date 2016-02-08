@@ -54,6 +54,6 @@ class Player extends Element
 					@position.top -= 5
 					@refreshPosition()
 			when "DOWN"
-				if @position.top + 5 < @pong.limit.bottom
+				if @position.top + 5 < @pong.limit.bottom - @position.height
 					@position.top += 5
 					@refreshPosition()
