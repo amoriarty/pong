@@ -58,8 +58,8 @@ class Game
 	collision: (elem1, elem2, callback) ->
 		# TODO SYSTEM DE COLLISION DOESN'T WORK !
 		if elem1 instanceof Element and elem2 instanceof Element
-			if elem1.position.top >= elem2.position.top and elem1.position.top <= elem2.position.top + elem2.position.height
-				if elem1.position.top + elem1.position.height >= elem2.position.top and elem1.position.top + elem1.position.height <= elem2.position.top + elem2.position.height
-					if elem1.position.left >= elem2.position.left and elem1.position.left <= elem2.position.left + elem2.position.width
-						if elem2.position.left + elem2.position.width >= elem2.position.left and elem1.position.left + elem1.position.width <= elem2.position.left + elem2.position.width
+			if elem1.position.top >= elem2.position.top \
+				and elem1.position.top + elem1.position.height <= elem2.position.top + elem2.position.height \
+				and elem1.position.left + elem1.position.width >= elem2.position.left \
+				and elem1.position.left <= elem2.position.left + elem2.position.width
 							callback()
