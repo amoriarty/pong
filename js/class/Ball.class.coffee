@@ -1,15 +1,13 @@
 class Ball extends Element
 	constructor: (id, @pong) ->
 		super id
-		@parameter = {
-			velocity: {
-				x: 0.01
-				y: 0.02
-			}
-			direction: {
-				x: 0
-				y: 0
-			}
+		@velocity = {
+			x: 1
+			y: 1
+		}
+		@direction = {
+			x: 0
+			y: 0
 		}
 
 	setService: (player) ->
