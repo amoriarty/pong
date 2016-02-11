@@ -1,10 +1,9 @@
 class Game
 	constructor: ->
 		@players = []
-		@init_game()
+		@initGame()
 
-	init_game: ->
-		@game_statue = false
+	initGame: ->
 		# TODO CREATION DES BALISE PLAYER SELON LES BESOIN (AFIN DE NE PAS AVOIR DES BALISES NON AFFICHER)
 		# EFFACEMENT DES PLAYER 2 ET 3
 		$("#player-2").css "display", "none"
@@ -12,6 +11,7 @@ class Game
 
 		# RECUPERATION DU DOM DU JEUX
 		@pong = new Element "pong"
+		@pong.game_statue = false
 
 		# CALCUL DES LIMITES DU TERRAIN
 		@pong.limit = {
@@ -33,13 +33,7 @@ class Game
 		@ball = new Ball "ball", @pong
 		@ball.setService one
 
-		$(document).keydown (touch) =>
-			if touch.key is ' ' and @game_statue is false
-				@game_statue = true
-				@ball.direction.x = 1
-				@ball.direction.y = 1
-				@start_game()
-
+	###
 	stop_game: ->
 		clearInterval @gameLoop
 
@@ -61,7 +55,6 @@ class Game
 			@ball.direction.y *= -1
 
 	collision: (elem1, elem2, callback) ->
-		# TODO SYSTEM DE COLLISION DOESN'T WORK !
 		if elem1 instanceof Element and elem2 instanceof Element
 			if elem1.position.top >= elem2.position.top \
 				and elem1.position.top + elem1.position.height <= elem2.position.top + elem2.position.height \
@@ -74,3 +67,4 @@ class Game
 			if elem.position.top <= @pong.limit.top \
 				or elem.position.top + elem.position.height >= @pong.limit.bottom
 					callback()
+	###

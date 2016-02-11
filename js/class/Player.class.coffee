@@ -2,12 +2,11 @@ class Player extends Element
 	constructor: (id, @pong, @place) ->
 		super id
 		@setPlayer @place
-		@moveInt()
+		@loop()
 		@direction = {
 			up: false
 			down: false
 		}
-		@score = 0
 
 	setPlayer: (place) ->
 		@position.top += @pong.position.height / 2 - @position.height / 2
@@ -40,7 +39,7 @@ class Player extends Element
 						when 40 then @direction.down = false
 
 	# TODO REGLAGE DYNAMIQUE DE L'INTERVAL
-	moveInt: ->
+	loop: ->
 		setInterval =>
 			if (@direction.up) then @move "UP"
 			if (@direction.down) then @move "DOWN"

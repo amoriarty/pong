@@ -9,6 +9,12 @@ class Ball extends Element
 			x: 0
 			y: 0
 		}
+		@startLoop()
+		$(document).keydown (touch) =>
+			if touch.key is ' ' and @pong.game_statue is false
+				@pong.game_statue = true
+				@direction.x = 1
+				@direction.y = 1
 
 	setService: (player) ->
 		if player instanceof Player
@@ -17,3 +23,12 @@ class Ball extends Element
 				when 1, 2 then @position.left = player.position.left + player.position.width
 				when 3, 4 then @position.left = player.position.left - @position.width
 			@refreshPosition()
+
+	startLoop: ->
+		@loop_interval = setInterval @loop, 1
+
+	loop: =>
+		@position.top += @direction.y * @velocity.y
+		@position.left += @direction.x * @velocity.x
+		@refreshPosition()
+
