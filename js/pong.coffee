@@ -6,6 +6,11 @@ jQuery ->
 
 	game = new Game
 
+	game.setPlayer "player_1", 1, "LEFT"
+	game.setPlayer "player_4", 4, "RIGHT"
+	game.setBall()
+
+	###
 	# INITIALISATION PLAYER 1
 	player_1 = new Player "player_1", game.pong, 1
 	player_1.configureKeyboard "LEFT"
@@ -16,5 +21,5 @@ jQuery ->
 
 	# INITIALISATION DE LA BALLE
 	ball = new Ball "ball", game.pong
-	ball.setService player_1
+	###
 

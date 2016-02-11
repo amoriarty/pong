@@ -17,7 +17,7 @@ class Player extends Element
 			when 4 then @position.left += 97.22 * @pong.position.width / 100
 		@refreshPosition()
 
-	configureKeyboard: (panel) ->
+	setKeyboard: (panel) ->
 		switch panel
 			when "LEFT"
 				$(document).keydown (touch) =>

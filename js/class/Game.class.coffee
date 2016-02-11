@@ -3,6 +3,7 @@ class Game
 		@players = []
 		@initGame()
 
+	# INIT TERRAIN DE JEU
 	initGame: ->
 		# RECUPERATION DU DOM DU JEUX
 		@pong = new Element "pong"
@@ -13,6 +14,18 @@ class Game
 			top: @pong.position.top
 			bottom: @pong.position.top + @pong.position.height + Math.round parseFloat @pong.$element.css "border-bottom-width"
 		}
+
+	# CREATION D'UN NOUVEAU PLAYER
+	setPlayer: (id, place, panel) ->
+		player = new Player id, @pong, place
+		player.setKeyboard panel
+		@players.push player
+
+	# CREATION ET MIS EN PLACE DE LA BALLE
+	setBall: ->
+		@ball = new Ball "ball", @pong
+		@ball.setService @players[0]
+
 
 
 	###
