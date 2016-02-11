@@ -10,9 +10,10 @@ class Game
 		@pong.game_statue = false
 
 		# CALCUL DES LIMITES DU TERRAIN
+		@pong.border_size = Math.round parseFloat @pong.$element.css "border-bottom-width"
 		@pong.limit = {
-			top: @pong.position.top + Math.round parseFloat @pong.$element.css "border-bottom-width"
-			bottom: @pong.position.top + @pong.position.height + Math.round parseFloat @pong.$element.css "border-bottom-width"
+			top: @pong.position.top + @pong.border_size
+			bottom: @pong.position.top + @pong.position.height + @pong.border_size
 		}
 
 	# CREATION D'UN NOUVEAU PLAYER
@@ -23,7 +24,7 @@ class Game
 
 	# CREATION ET MIS EN PLACE DE LA BALLE
 	setBall: ->
-		@ball = new Ball "ball", @pong
+		@ball = new Ball "ball", @pong, @players
 		@ball.setService @players[0]
 
 

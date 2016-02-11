@@ -1,5 +1,5 @@
 class Ball extends Element
-	constructor: (id, @pong) ->
+	constructor: (id, @pong, @players) ->
 		super id
 		@velocity = {
 			x: 0.5
@@ -31,9 +31,18 @@ class Ball extends Element
 		@position.top += @direction.y * @velocity.y
 		@position.left += @direction.x * @velocity.x
 		@refreshPosition()
-		@hitBordor()
+		@hitBorder()
+		@hitPlayer()
 
-	hitBordor: ->
+	hitBorder: ->
 		if @position.top <= @pong.limit.top \
 		or @position.top + @position.height >= @pong.limit.bottom
 			@direction.y *= -1
+
+	hitPlayer: ->
+		for player in @players
+			if @position.top >= player.position.top \
+			and @position.top + @position.height <= player.position.top + player.position.height \
+			and @position.left + @position.width >= player.position.left \
+			and @position.left <= player.position.left + player.position.width
+				@direction.x *= -1
