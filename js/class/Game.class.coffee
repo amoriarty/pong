@@ -15,6 +15,7 @@ class Game
 			top: @pong.position.top + @pong.border_size
 			bottom: @pong.position.top + @pong.position.height + @pong.border_size
 			left: @pong.position.left + @pong.border_size
+			# TODO LIMIT PROBLEME
 			right: @pong.position.left + @pong.position.width - @pong.border_size
 		}
 
