@@ -2,7 +2,7 @@ class Element
 	constructor: (id) ->
 		if id
 			@$element = $("##{id}")
-			position = @$element.position()
+			position = @$element.offset()
 			@position = {
 				top: position.top
 				left: position.left

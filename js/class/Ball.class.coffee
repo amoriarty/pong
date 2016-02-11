@@ -33,6 +33,10 @@ class Ball extends Element
 		@refreshPosition()
 		@hitBorder()
 		@hitPlayer()
+		@hitLeftBorder =>
+			@direction.x *= -1
+		@hitRightBorder =>
+			@direction.x *= -1
 
 	hitBorder: ->
 		if @position.top <= @pong.limit.top \
@@ -46,3 +50,11 @@ class Ball extends Element
 			and @position.left + @position.width >= player.position.left \
 			and @position.left <= player.position.left + player.position.width
 				@direction.x *= -1
+
+	hitLeftBorder: (callback) ->
+		if @position.left <= @pong.limit.left
+			callback()
+
+	hitRightBorder: (callback) ->
+		if @position.left >= @pong.limit.right
+			callback()
