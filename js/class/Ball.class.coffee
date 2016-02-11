@@ -2,8 +2,8 @@ class Ball extends Element
 	constructor: (id, @pong) ->
 		super id
 		@velocity = {
-			x: 1
-			y: 1
+			x: 0.5
+			y: 0.5
 		}
 		@direction = {
 			x: 0

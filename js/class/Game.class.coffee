@@ -44,7 +44,7 @@ class Game
 		clearInterval @gameLoop
 
 	start_game: ->
-		@gameLoop = setInterval @game_loop, 10
+		@gameLoop = setInterval @game_loop, 1
 
 	game_loop: =>
 		@ball.position.top += @ball.direction.y * @ball.velocity.y

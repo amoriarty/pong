@@ -22,38 +22,38 @@ class Player extends Element
 		switch panel
 			when "LEFT"
 				$(document).keydown (touch) =>
-					switch touch.key
-						when "w", "z" then @direction.up = true
-						when "s" then @direction.down = true
+					switch touch.keyCode
+						when 87, 90 then @direction.up = true
+						when 83 then @direction.down = true
 				$(document).keyup (touch) =>
-					switch touch.key
-						when "w", "z" then @direction.up = false
-						when "s" then @direction.down = false
+					switch touch.keyCode
+						when 87, 90 then @direction.up = false
+						when 83 then @direction.down = false
 			when "RIGHT"
 				$(document).keydown (touch) =>
-					switch touch.key
-						when "ArrowUp" then @direction.up = true
-						when "ArrowDown" then @direction.down = true
+					switch touch.keyCode
+						when 38 then @direction.up = true
+						when 40 then @direction.down = true
 				$(document).keyup (touch) =>
-					switch touch.key
-						when "ArrowUp" then @direction.up = false
-						when "ArrowDown" then @direction.down = false
+					switch touch.keyCode
+						when 38 then @direction.up = false
+						when 40 then @direction.down = false
 
 	# TODO REGLAGE DYNAMIQUE DE L'INTERVAL
 	moveInt: ->
 		setInterval =>
 			if (@direction.up) then @move "UP"
 			if (@direction.down) then @move "DOWN"
-		, 10
+		, 1
 
 	# TODO REGLAGE DYNAMIQUE DU NOMBRE DE PIXEL PAR DEPLACEMENT
 	move: (direction) ->
 		switch direction
 			when "UP"
-				if @position.top - 5 > @pong.limit.top
-					@position.top -= 5
+				if @position.top - 1 > @pong.limit.top
+					@position.top -= 1
 					@refreshPosition()
 			when "DOWN"
-				if @position.top + 5 < @pong.limit.bottom - @position.height
-					@position.top += 5
+				if @position.top + 1 < @pong.limit.bottom - @position.height
+					@position.top += 1
 					@refreshPosition()
