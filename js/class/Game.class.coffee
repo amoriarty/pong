@@ -4,11 +4,6 @@ class Game
 		@initGame()
 
 	initGame: ->
-		# TODO CREATION DES BALISE PLAYER SELON LES BESOIN (AFIN DE NE PAS AVOIR DES BALISES NON AFFICHER)
-		# EFFACEMENT DES PLAYER 2 ET 3
-		$("#player-2").css "display", "none"
-		$("#player-3").css "display", "none"
-
 		# RECUPERATION DU DOM DU JEUX
 		@pong = new Element "pong"
 		@pong.game_statue = false
@@ -19,32 +14,8 @@ class Game
 			bottom: @pong.position.top + @pong.position.height + Math.round parseFloat @pong.$element.css "border-bottom-width"
 		}
 
-		# INITIALISATION PLAYER 1
-		one = new Player "player-1", @pong, 1
-		one.configureKeyboard "LEFT"
-		@players.push one
-
-		# INITIALISATION PLAYER 2
-		two = new Player "player-4", @pong, 4
-		two.configureKeyboard "RIGHT"
-		@players.push two
-
-		# INITIALISATION DE LA BALLE
-		@ball = new Ball "ball", @pong
-		@ball.setService one
 
 	###
-	stop_game: ->
-		clearInterval @gameLoop
-
-	start_game: ->
-		@gameLoop = setInterval @game_loop, 1
-
-	game_loop: =>
-		@ball.position.top += @ball.direction.y * @ball.velocity.y
-		@ball.position.left += @ball.direction.x * @ball.velocity.x
-		@ball.refreshPosition()
-
 		# COLLISION PLAYER
 		for player in @players
 			@collision @ball, player, =>
