@@ -31,4 +31,9 @@ class Ball extends Element
 		@position.top += @direction.y * @velocity.y
 		@position.left += @direction.x * @velocity.x
 		@refreshPosition()
+		@hitBordor()
 
+	hitBordor: ->
+		if @position.top <= @pong.limit.top \
+		or @position.top + @position.height >= @pong.limit.bottom
+			@direction.y *= -1

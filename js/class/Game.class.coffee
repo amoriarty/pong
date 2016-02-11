@@ -11,7 +11,7 @@ class Game
 
 		# CALCUL DES LIMITES DU TERRAIN
 		@pong.limit = {
-			top: @pong.position.top
+			top: @pong.position.top + Math.round parseFloat @pong.$element.css "border-bottom-width"
 			bottom: @pong.position.top + @pong.position.height + Math.round parseFloat @pong.$element.css "border-bottom-width"
 		}
 
