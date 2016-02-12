@@ -2,8 +2,8 @@ class Ball extends Element
 	constructor: (id, @pong, @players) ->
 		super id
 		@velocity = {
-			x: 0.5
-			y: 0.5
+			x: 1
+			y: 1
 		}
 		@direction = {
 			x: 0
@@ -14,7 +14,7 @@ class Ball extends Element
 			if touch.key is ' ' and @pong.game_statue is false
 				@pong.game_statue = true
 				@direction.x = 1
-				@direction.y = 1
+				@direction.y = if Math.random() < 0.5 then -1 else 1
 
 	setService: (player) ->
 		if player instanceof Player
@@ -25,11 +25,12 @@ class Ball extends Element
 			@refreshPosition()
 
 	startLoop: ->
-		@loop_interval = setInterval @loop, 1
+		@loop_interval = setInterval @loop, 10
 
 	loop: =>
-		@position.top += @direction.y * @velocity.y
 		@position.left += @direction.x * @velocity.x
+		@position.top += @direction.y * Math.random() #@velocity.y
+		console.log "X = #{@direction.x} Y = #{@direction.y}"
 		@refreshPosition()
 		@hitBorder()
 		@hitPlayer()
@@ -38,6 +39,7 @@ class Ball extends Element
 		@hitRightBorder =>
 			@direction.x *= -1
 
+	# TODO ERREUR COLLISION EN BAS
 	hitBorder: ->
 		if @position.top <= @pong.limit.top \
 		or @position.top + @position.height >= @pong.limit.bottom
