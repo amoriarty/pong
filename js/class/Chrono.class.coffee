@@ -1,18 +1,16 @@
 class Chrono
 	constructor: ->
-		@Date = new Date
-		@timer = {
-			start: false
-			stop: false
-		}
+		@start = false
+		@stop = false
 
-	# TODO MYSTERE DE DATE DANS LE CORE DE JS, SA PROMET !
 	startChrono: ->
-		if not @timer.start then @timer.start = @Date.getMilliseconds()
+		@start = if not @start then new Date().getTime()
+
+	stopChrono: ->
+		@stop = if not @start then new Date().getTime()
 
 	getDuration: ->
-		now = if @timer.stop then @timer.stop else @Date.getMilliseconds()
-		diff = now - @timer.start
+		now = if not @stop then new Date().getTime() else @stop
+		diff = now - @start
 		diff = new Date diff
-		"#{diff.getSeconds()}"
-
+		"#{diff.getSeconds()}:#{diff.getMilliseconds()}"

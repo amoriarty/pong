@@ -20,13 +20,13 @@ class Game
 			right: @pong.position.left + @pong.position.width - 2 * @pong.border_size
 		}
 
-		# PREPARATION DU CHRONOMETRE
+		# CHRONOMETRE
 		$(document).keydown (touch) =>
-			if touch.keyCode is 32
-				@Chrono.startChrono()
-				setInterval =>
-					console.log @Chrono.getDuration()
-				, 1
+			@Chrono.startChrono()
+			setInterval =>
+				console.log @Chrono.getDuration()
+			, 100
+
 
 	# CREATION D'UN NOUVEAU PLAYER
 	setPlayer: (id, place, panel) ->
@@ -38,6 +38,8 @@ class Game
 	setBall: () ->
 		@ball = new Ball "ball", @pong, @players, {
 			left: =>
+				@Chrono.stopChrono()
 			right: =>
+				@Chrono.stopChrono()
 		}
 		@ball.setService @players[0]
