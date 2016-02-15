@@ -9,6 +9,3 @@ class Element
 				width: @$element.width()
 				height: @$element.height()
 			}
-
-	refreshPosition: ->
-		@$element.css @position

@@ -15,7 +15,7 @@ class Player extends Element
 			when 2 then @position.left += 23.95 * @pong.position.width / 100
 			when 3 then @position.left += 73.88 * @pong.position.width / 100
 			when 4 then @position.left += 97.22 * @pong.position.width / 100
-		@refreshPosition()
+		@$element.css @position
 
 	setKeyboard: (panel) ->
 		switch panel
@@ -38,21 +38,19 @@ class Player extends Element
 						when 38 then @direction.up = false
 						when 40 then @direction.down = false
 
-	# TODO REGLAGE DYNAMIQUE DE L'INTERVAL
 	loop: ->
 		setInterval =>
 			if (@direction.up) then @move "UP"
 			if (@direction.down) then @move "DOWN"
 		, 1
 
-	# TODO REGLAGE DYNAMIQUE DU NOMBRE DE PIXEL PAR DEPLACEMENT
 	move: (direction) ->
 		switch direction
 			when "UP"
 				if @position.top - 1 > @pong.limit.top
 					@position.top -= 1
-					@refreshPosition()
+					@$element.css @position
 			when "DOWN"
 				if @position.top + 1 < @pong.limit.bottom - @position.height
 					@position.top += 1
-					@refreshPosition()
+					@$element.css @position
