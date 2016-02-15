@@ -13,7 +13,7 @@ class Ball extends Element
 			y: if Math.random() < 0.5 then Math.random() * -1 else Math.random()
 		}
 		$(document).keydown (touch) =>
-			if touch.key is ' ' and @pong.game_statue is false
+			if touch.keyCode is 32 and @pong.game_statue is false
 				@pong.game_statue = true
 				@startLoop()
 
