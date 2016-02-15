@@ -1,4 +1,5 @@
 class Game
+	# TODO VERIF PROPRETER
 	constructor: ->
 		@players = []
 		@initGame()
@@ -21,7 +22,7 @@ class Game
 		}
 
 		# CHRONOMETRE
-		$(document).keydown =>
+		$(document).keydown (t) =>
 			@Chrono.startChrono()
 
 
@@ -30,6 +31,11 @@ class Game
 		player = new Player id, @pong, place
 		player.setKeyboard panel
 		@players.push player
+
+	# CREATION D'UN BOT
+	setBot: (id, place) ->
+		@bot = new Bot id, @pong, place
+		@players.push @bot
 
 	# CREATION ET MIS EN PLACE DE LA BALLE
 	setBall: () ->
@@ -40,3 +46,4 @@ class Game
 				@Chrono.stopChrono()
 		}
 		@ball.setService @players[0]
+		@bot.setBall @ball

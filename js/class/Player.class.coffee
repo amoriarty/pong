@@ -1,4 +1,5 @@
 class Player extends Element
+	# TODO COMMENTAIRE !!!!
 	constructor: (id, @pong, @place) ->
 		super id
 		@setPlayer @place
@@ -40,15 +41,15 @@ class Player extends Element
 
 	loop: ->
 		setInterval =>
-			if (@direction.up) then @move "UP"
-			if (@direction.down) then @move "DOWN"
+			if (@direction.up) then @move "UP", 1
+			if (@direction.down) then @move "DOWN", 1
 		, 1
 
-	move: (direction) ->
+	move: (direction, speed) ->
 		switch direction
 			when "UP"
-				if @position.top - 1 > @pong.limit.top
-					@position.top -= 1
+				if @position.top - speed > @pong.limit.top
+					@position.top -= speed
 					@$element.css @position
 			when "DOWN"
 				if @position.top + 1 < @pong.limit.bottom - @position.height

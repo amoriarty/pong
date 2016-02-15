@@ -1,11 +1,14 @@
 class Ball extends Element
 	# TODO LE DEPLACEMENT PAR NOMBRE ALEATOIRE PEUT ENCORE ETRE AFFINER
+	# TODO AJUSTER LA VELOCITE
+	# TODO AJOUTER UN MAXIMUM A LA VELOCITE
+	# TODO COMMENTAIRE !!!!
 	constructor: (id, @pong, @players, @callback) ->
 		super id
 		# VITESSE DE LA BALLE
 		@velocity = {
-			x: 1.3
-			y: 1.3
+			x: 1.6
+			y: 1.6
 		}
 		# DIRECTION
 		@direction = {
@@ -50,8 +53,8 @@ class Ball extends Element
 			and @position.top < player.position.top + player.position.height + 2\
 			and @position.left + @position.width > player.position.left - 2 \
 			and @position.left < player.position.left + player.position.width + 2
-				@velocity.x *= 1.03
-				@velocity.y *= 1.01
+				@velocity.x *= 1.05
+				@velocity.y *= 1.03
 				@direction.x *= -1
 				if @direction.y > 0
 					@direction.y = if @position.top + @position.height / 2 > player.position.top + player.position.height / 2 \
