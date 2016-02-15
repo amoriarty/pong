@@ -2,8 +2,8 @@ class Ball extends Element
 	constructor: (id, @pong, @players, @keyboard) ->
 		super id
 		@velocity = {
-			x: 1
-			y: 1
+			x: 1.3
+			y: 1.3
 		}
 		@direction = {
 			x: 0
@@ -13,7 +13,7 @@ class Ball extends Element
 			if touch.key is ' ' and @pong.game_statue is false
 				@pong.game_statue = true
 				@direction.x = 1
-				@direction.y = if Math.random() < 0.5 then -1 else 1
+				@direction.y = if Math.random() < 0.5 then Math.random() * -1 else Math.random()
 				@startLoop()
 
 	setService: (player) ->
@@ -41,7 +41,8 @@ class Ball extends Element
 	hitBorder: ->
 		if @position.top < @pong.limit.top \
 		or @position.top + @position.height > @pong.limit.bottom
-			@direction.y *= -1
+			@direction.y = if @direction.y > 0 then Math.random() * -1 else Math.random()
+			@velocity.y *= 1.01
 
 	# TODO PETIT PROBLEME DE COLLISION LORSQUE LE PLAYER ATTERIT SUR LA BALLE
 	hitPlayer: ->
@@ -51,7 +52,7 @@ class Ball extends Element
 			and @position.left + @position.width > player.position.left - 2 \
 			and @position.left < player.position.left + player.position.width + 2
 				@direction.x *= -1
-				@velocity.x += 0.01
+				@velocity.x *= 1.03
 
 	# TODO CALLBACK BORDER
 	hitLeftBorder: (callback) ->
