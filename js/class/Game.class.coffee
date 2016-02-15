@@ -25,33 +25,11 @@ class Game
 		@players.push player
 
 	# CREATION ET MIS EN PLACE DE LA BALLE
-	setBall: ->
-		@ball = new Ball "ball", @pong, @players
+	setBall: () ->
+		@ball = new Ball "ball", @pong, @players, {
+			left: ->
+				console.log "YOU SUCK"
+			right: ->
+				console.log "YOU ROCK"
+		}
 		@ball.setService @players[0]
-
-
-
-	###
-		# COLLISION PLAYER
-		for player in @players
-			@collision @ball, player, =>
-				@ball.direction.x *= -1
-
-		# COLLISION BORDURE HAUT ET BAS
-		@limit_collision @ball, =>
-			@ball.direction.y *= -1
-
-	collision: (elem1, elem2, callback) ->
-		if elem1 instanceof Element and elem2 instanceof Element
-			if elem1.position.top >= elem2.position.top \
-				and elem1.position.top + elem1.position.height <= elem2.position.top + elem2.position.height \
-				and elem1.position.left + elem1.position.width >= elem2.position.left \
-				and elem1.position.left <= elem2.position.left + elem2.position.width
-							callback()
-
-	limit_collision: (elem, callback) =>
-		if elem instanceof Element
-			if elem.position.top <= @pong.limit.top \
-				or elem.position.top + elem.position.height >= @pong.limit.bottom
-					callback()
-	###

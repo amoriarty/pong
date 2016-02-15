@@ -1,20 +1,20 @@
 class Ball extends Element
 	# TODO LE DEPLACEMENT PAR NOMBRE ALEATOIRE PEUT ENCORE ETRE AFFINER
-	constructor: (id, @pong, @players, @keyboard) ->
+	constructor: (id, @pong, @players, @callback) ->
 		super id
+		# VITESSE DE LA BALLE
 		@velocity = {
 			x: 1.3
 			y: 1.3
 		}
+		# DIRECTION
 		@direction = {
-			x: 0
-			y: 0
+			x: 1
+			y: if Math.random() < 0.5 then Math.random() * -1 else Math.random()
 		}
 		$(document).keydown (touch) =>
 			if touch.key is ' ' and @pong.game_statue is false
 				@pong.game_statue = true
-				@direction.x = 1
-				@direction.y = if Math.random() < 0.5 then Math.random() * -1 else Math.random()
 				@startLoop()
 
 	setService: (player) ->
@@ -29,15 +29,14 @@ class Ball extends Element
 		@loop_interval = setInterval @loop, 10
 
 	loop: =>
-		@hitBorder()
-		@hitPlayer()
-		@hitLeftBorder =>
-			@direction.x *= -1
-		@hitRightBorder =>
-			@direction.x *= -1
-		@position.left += @direction.x * @velocity.x
-		@position.top += @direction.y * @velocity.y
-		@$element.css @position
+		if @position.left > @pong.limit.left and @position.left < @pong.limit.right
+			@hitBorder()
+			@hitPlayer()
+			@hitLeftBorder @callback.left
+			@hitRightBorder @callback.right
+			@position.left += @direction.x * @velocity.x
+			@position.top += @direction.y * @velocity.y
+			@$element.css @position
 
 	hitBorder: ->
 		if @position.top < @pong.limit.top \
@@ -62,9 +61,9 @@ class Ball extends Element
 
 	# TODO CALLBACK BORDER
 	hitLeftBorder: (callback) ->
-		if @position.left < @pong.limit.left
+		if @position.left <= @pong.limit.left + 2
 			callback()
 
 	hitRightBorder: (callback) ->
-		if @position.left >= @pong.limit.right
+		if @position.left >= @pong.limit.right - 2
 			callback()
