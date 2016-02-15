@@ -1,6 +1,5 @@
 class Game
 	constructor: ->
-		@Chrono = new Chrono
 		@players = []
 		@initGame()
 
@@ -9,6 +8,7 @@ class Game
 		# RECUPERATION DU DOM DU JEUX
 		@pong = new Element "pong"
 		@pong.game_statue = false
+		@Chrono = new Chrono
 
 		# CALCUL DES LIMITES DU TERRAIN
 		# TODO RESIZE WINDOW
@@ -21,11 +21,8 @@ class Game
 		}
 
 		# CHRONOMETRE
-		$(document).keydown (touch) =>
+		$(document).keydown =>
 			@Chrono.startChrono()
-			setInterval =>
-				console.log @Chrono.getDuration()
-			, 100
 
 
 	# CREATION D'UN NOUVEAU PLAYER
