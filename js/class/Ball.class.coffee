@@ -30,7 +30,6 @@ class Ball extends Element
 	loop: =>
 		@position.left += @direction.x * @velocity.x
 		@position.top += @direction.y * Math.random() #@velocity.y
-		console.log "X = #{@direction.x} Y = #{@direction.y}"
 		@refreshPosition()
 		@hitBorder()
 		@hitPlayer()
@@ -39,10 +38,9 @@ class Ball extends Element
 		@hitRightBorder =>
 			@direction.x *= -1
 
-	# TODO ERREUR COLLISION EN BAS
 	hitBorder: ->
-		if @position.top <= @pong.limit.top \
-		or @position.top + @position.height >= @pong.limit.bottom
+		if @position.top < @pong.limit.top \
+		or @position.top + @position.height > @pong.limit.bottom
 			@direction.y *= -1
 
 	hitPlayer: ->
