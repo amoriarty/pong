@@ -1,4 +1,5 @@
 class Ball extends Element
+	# TODO LE DEPLACEMENT PAR NOMBRE ALEATOIRE PEUT ENCORE ETRE AFFINER
 	constructor: (id, @pong, @players, @keyboard) ->
 		super id
 		@velocity = {
@@ -44,15 +45,20 @@ class Ball extends Element
 			@direction.y = if @direction.y > 0 then Math.random() * -1 else Math.random()
 			@velocity.y *= 1.01
 
-	# TODO PETIT PROBLEME DE COLLISION LORSQUE LE PLAYER ATTERIT SUR LA BALLE
 	hitPlayer: ->
 		for player in @players
 			if @position.top + @position.height > player.position.top - 2 \
 			and @position.top < player.position.top + player.position.height + 2\
 			and @position.left + @position.width > player.position.left - 2 \
 			and @position.left < player.position.left + player.position.width + 2
-				@direction.x *= -1
 				@velocity.x *= 1.03
+				@velocity.y *= 1.01
+				@direction.x *= -1
+				if @direction.y > 0
+					@direction.y = if @position.top + @position.height / 2 > player.position.top + player.position.height / 2 \
+						then Math.random() * -1 else Math.random()
+				else @direction.y = if @position.top + @position.height / 2 < player.position.top + player.position.height / 2 \
+					then Math.random() * -1 else Math.random()
 
 	# TODO CALLBACK BORDER
 	hitLeftBorder: (callback) ->
