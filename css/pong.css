@@ -11,16 +11,10 @@ body {
 	border: solid 5px #FFFFFF; /* DEFINITION DE LA BORDURE ET DE SA COULEUR */
 }
 
-#chrono {
+#info {
 	color: #FFFFFF;
 	margin-left: 50px;
 	margin-top: 50px;
-}
-
-#try {
-	color: #FFFFFF;
-	margin-left: 50px;
-	margin-top: 75px;
 }
 
 #filet {

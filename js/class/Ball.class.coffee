@@ -33,9 +33,13 @@ class Ball extends Element
 	startLoop: ->
 		@loop_interval = setInterval @loop, 10
 
+	stopLoop: ->
+		clearInterval @loop_interval
+
 	# FONCTION PASSER A SET INTERVAL
 	loop: =>
 		###
+        # TEMPS REEL DES VALEURS DE LA BALLE
 		console.log "VELOCITY"
 		console.log "       X = #{@velocity.x}"
 		console.log "       Y = #{@velocity.y}"
@@ -60,7 +64,6 @@ class Ball extends Element
 		if @position.top < @pong.limit.top \
 		or @position.top + @position.height > @pong.limit.bottom
 			@direction.y = if @direction.y > 0 then (Math.random() - 0.5) * -1 else Math.random() - 0.5
-			@velocity.y *= 1.02
 
 	# VERIFIE LA COLLISION AVEC TOUT LES JOUEURS PRESENTS ET INVERSE LA TRAJECTOIRE DE LA BALLE
 	hitPlayer: ->

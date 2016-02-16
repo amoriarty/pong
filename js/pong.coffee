@@ -9,14 +9,13 @@ jQuery ->
 	# TODO THERE'S SOME PRETTY FUCKING GLITCH IN THIS THING !
 	# TODO DEPLACEMENT SANS ALLER RETOUR DU BOT
 
-	game = new Game
+	# EFFACEMENT DES PLAYER 2 ET 3
 	$("#player_2").css "display", "none"
 	$("#player_3").css "display", "none"
-	$("#pong").click =>
-		# EFFACEMENT DES PLAYER 2 ET 3
 
-		$("#try").text "Utilisé la barre espace pour servir"
-		game.setPlayer "player_1", 1, "RIGHT"
-		game.setBot "player_4", 4
-		game.setBall()
-
+	# GAME
+	game = new Game
+	game.setPlayer "player_1", 1, "RIGHT"
+	game.setBot "player_4", 4
+	game.setBall()
+	game.initGame()
