@@ -48,8 +48,8 @@ class Game
 
 	# CREATION D'UN BOT
 	setBot: (id, place) ->
-		@bot = new Bot id, @pong, place
-		@players.push @bot
+		bot = new Bot id, @pong, place
+		@players.push bot
 
 	# CREATION ET MIS EN PLACE DE LA BALLE
 	setBall: ->
@@ -58,7 +58,9 @@ class Game
 			right: @youLose
 		}
 		@ball.setService @players[0]
-		@bot.setBall @ball
+		for player in @players
+			if player instanceof Bot
+				player.setBall @ball
 
 	# FONCTION APPELLER EN CAS DE VICTOIRE
 	youWin: =>
