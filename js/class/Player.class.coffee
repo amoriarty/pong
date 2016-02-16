@@ -58,6 +58,6 @@ class Player extends Element
 					@position.top -= speed
 					@$element.css @position
 			when "DOWN"
-				if @position.top + 1 < @pong.limit.bottom - @position.height
-					@position.top += 1
+				if @position.top + speed < @pong.limit.bottom - @position.height
+					@position.top += speed
 					@$element.css @position

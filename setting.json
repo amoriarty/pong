@@ -1,0 +1,25 @@
+{
+	"pong": {
+		"loop_interval": 0
+	},
+	"keyboard": {
+		"space": 32,
+		"s": 83,
+		"w": 87,
+		"z": 90,
+		"ArrowUp": 38,
+		"ArrowDown": 40
+	},
+	"player": {
+		"speed": 1,
+		"bot_speed": 5,
+		"start_height": 90,
+		"end_height": 50
+	},
+	"ball": {
+		"velocity": {
+			"x": 2,
+			"y": 2
+		}
+	}
+}

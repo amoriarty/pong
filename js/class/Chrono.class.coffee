@@ -23,5 +23,5 @@ class Chrono extends Element
 			seconds: diff.getSeconds()
 			min: diff.getMinutes()
 		}
-		"Temps #{timer.min}:#{timer.seconds}:#{timer.milli}"
+		"#{timer.min}:#{timer.seconds}:#{timer.milli}"
 
