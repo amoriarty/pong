@@ -12,7 +12,7 @@ class Ball extends Element
 		# DIRECTION
 		@direction = {
 			x: 1
-			y: if Math.random() < 0.5 then Math.random() * -1 else Math.random()
+			y: if Math.random() < 0.5 then (Math.random() - 0.5) * -1 else Math.random() - 0.5
 		}
 		$(document).keydown (touch) =>
 			if touch.keyCode is 32 and @pong.game_statue is false
@@ -59,7 +59,7 @@ class Ball extends Element
 	hitBorder: ->
 		if @position.top < @pong.limit.top \
 		or @position.top + @position.height > @pong.limit.bottom
-			@direction.y = if @direction.y > 0 then Math.random() * -1 else Math.random()
+			@direction.y = if @direction.y > 0 then (Math.random() - 0.5) * -1 else Math.random() - 0.5
 			@velocity.y *= 1.02
 
 	# VERIFIE LA COLLISION AVEC TOUT LES JOUEURS PRESENTS ET INVERSE LA TRAJECTOIRE DE LA BALLE
@@ -73,9 +73,9 @@ class Ball extends Element
 				@direction.x *= -1
 				if @direction.y > 0
 					@direction.y = if @position.top + @position.height / 2 > player.position.top + player.position.height / 2 \
-						then Math.random() * -1 else Math.random()
+						then (Math.random() - 0.5) * -1 else Math.random() - 0.5
 				else @direction.y = if @position.top + @position.height / 2 < player.position.top + player.position.height / 2 \
-					then Math.random() * -1 else Math.random()
+					then (Math.random() - 0.5) * -1 else Math.random() - 0.5
 				player.position.height -= if player.position.height > 50 then 5 else 0
 
 	# COLLISION AVEC LE MUR DE GAUCHE QUI APPELLE UN CALLBACK

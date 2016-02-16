@@ -23,7 +23,7 @@ class Game
 
 		# CHRONOMETRE
 		$(document).keydown (t) =>
-			if t.keyCode is 32
+			if t.keyCode is 32 and not @Chrono.start
 				@Chrono.startChrono()
 				setInterval =>
 					@Chrono.$element.text @Chrono.getDuration()
