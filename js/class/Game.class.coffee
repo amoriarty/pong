@@ -7,7 +7,6 @@ class Game
 		@pong = new Element "pong"
 		@pong.game_statue = false
 
-		# TODO RESIZE WINDOW
 		# CALCUL DES LIMITES DU TERRAIN
 		@pong.border_size = Math.round parseFloat @pong.$element.css "border-bottom-width"
 		@pong.limit = {
