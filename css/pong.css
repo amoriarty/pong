@@ -17,6 +17,12 @@ body {
 	margin-top: 50px;
 }
 
+#try {
+	color: #FFFFFF;
+	margin-left: 50px;
+	margin-top: 75px;
+}
+
 #filet {
 	background-color: #FFFFFF; /* COULEUR DU FILET */
 }

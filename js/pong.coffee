@@ -8,13 +8,15 @@ jQuery ->
 	# TODO REDUISSEMENT DU JOUEUR
 	# TODO THERE'S SOME PRETTY FUCKING GLITCH IN THIS THING !
 	# TODO DEPLACEMENT SANS ALLER RETOUR DU BOT
-	# EFFACEMENT DES PLAYER 2 ET 3
-	$("#player_2").css "display", "none"
-	$("#player_3").css "display", "none"
 
 	game = new Game
+	$("#player_2").css "display", "none"
+	$("#player_3").css "display", "none"
+	$("#pong").click =>
+		# EFFACEMENT DES PLAYER 2 ET 3
 
-	game.setPlayer "player_1", 1, "LEFT"
-	game.setBot "player_4", 4
-	game.setBall()
+		$("#try").text "Utilisé la barre espace pour servir"
+		game.setPlayer "player_1", 1, "RIGHT"
+		game.setBot "player_4", 4
+		game.setBall()
 
