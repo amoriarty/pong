@@ -1,5 +1,4 @@
 class Player extends Element
-	# TODO COMMENTAIRE !!!!
 	constructor: (id, @pong, @place) ->
 		super id
 		@setPlayer @place
@@ -9,6 +8,7 @@ class Player extends Element
 			down: false
 		}
 
+	# PERMET DE PLACER DYNAMIQUEMENT LE JOUEUR SELON LA PLACE QU'ON LUI DEFINI
 	setPlayer: (place) ->
 		@position.top += @pong.position.height / 2 - @position.height / 2
 		switch place
@@ -18,6 +18,9 @@ class Player extends Element
 			when 4 then @position.left += 97.22 * @pong.position.width / 100
 		@$element.css @position
 
+	# PERMET DE CONFIGURER LE CLAVIER SELON LE PANEL
+	# LEFT: Z/W, S
+	# RIGHT: FLECHE HAUT, FLECHE BAS
 	setKeyboard: (panel) ->
 		switch panel
 			when "LEFT"
@@ -39,12 +42,15 @@ class Player extends Element
 						when 38 then @direction.up = false
 						when 40 then @direction.down = false
 
+	# LOOP PERMETTANT DE VERIFIER L'ETAT DE VARIABLE DIRECTION
+	# OBLIGATOIRE AFIN DE POUVOIR APPUYER SIMULTANEMENT SUR PLUSIEURS TOUCHES DU CLAVIER
 	loop: ->
 		setInterval =>
 			if (@direction.up) then @move "UP", 1
 			if (@direction.down) then @move "DOWN", 1
 		, 1
 
+	# FONCTION DE DEPLACEMENT, QUI EST AINSI APPELLER PAR LA CLASSE ETENDU BOT
 	move: (direction, speed) ->
 		switch direction
 			when "UP"
