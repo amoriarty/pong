@@ -11,11 +11,14 @@ body {
 	border: solid 5px #FFFFFF; /* DEFINITION DE LA BORDURE ET DE SA COULEUR */
 }
 
+#chrono {
+	color: #FFFFFF;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+
 #filet {
 	background-color: #FFFFFF; /* COULEUR DU FILET */
-	width: 10px; /* DIMENSION DU FILET */
-	height: 400px;
-	margin-left: 355px; /* CENTRAGE DU FILET PAR RAPPORT AU PONG */
 }
 
 #ball {

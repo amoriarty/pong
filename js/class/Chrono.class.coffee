@@ -1,11 +1,13 @@
 class Chrono extends Element
-	constructor: ->
+	constructor: (id) ->
+		super id
 		@start = false
 		@stop = false
 
 	# DEMARRE LE CHRONOMETRE SI CE N'EST PAS DEJA FAIT
 	startChrono: ->
 		@start = if not @start then new Date().getTime()
+
 
 	# STOP LE CHRONOMETRE SI CE N'EST PAS DEJA FAIT
 	stopChrono: ->
@@ -21,4 +23,5 @@ class Chrono extends Element
 			seconds: diff.getSeconds()
 			min: diff.getMinutes()
 		}
-		"<div id='chrono'>Duration #{timer.min.toString()}:#{timer.seconds.toString()}:#{timer.milli.toString()}</div>"
+		"Duration #{timer.min}:#{timer.seconds}:#{timer.milli}"
+

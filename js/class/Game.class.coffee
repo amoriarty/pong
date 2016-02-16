@@ -9,7 +9,7 @@ class Game
 		# RECUPERATION DU DOM DU JEUX
 		@pong = new Element "pong"
 		@pong.game_statue = false
-		@Chrono = new Chrono
+		@Chrono = new Chrono "chrono"
 
 		# CALCUL DES LIMITES DU TERRAIN
 		# TODO RESIZE WINDOW
@@ -23,7 +23,12 @@ class Game
 
 		# CHRONOMETRE
 		$(document).keydown (t) =>
-			@Chrono.startChrono()
+			if t.keyCode is 32
+				@Chrono.startChrono()
+				setInterval =>
+					@Chrono.$element.text @Chrono.getDuration()
+				, 1
+
 
 
 	# CREATION D'UN NOUVEAU PLAYER
@@ -42,8 +47,10 @@ class Game
 		@ball = new Ball "ball", @pong, @players, {
 			left: =>
 				@Chrono.stopChrono()
+				@Chrono.$element.text @Chrono.getDuration()
 			right: =>
 				@Chrono.stopChrono()
+				@Chrono.$element.text @Chrono.getDuration()
 		}
 		@ball.setService @players[0]
 		@bot.setBall @ball
