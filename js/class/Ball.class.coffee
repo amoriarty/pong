@@ -35,6 +35,17 @@ class Ball extends Element
 
 	# FONCTION PASSER A SET INTERVAL
 	loop: =>
+		###
+		console.log "VELOCITY"
+		console.log "       X = #{@velocity.x}"
+		console.log "       Y = #{@velocity.y}"
+		console.log "DIRECTION"
+		console.log "       X = #{@direction.x}"
+		console.log "       Y = #{@direction.y}"
+		console.log "BOTH"
+		console.log "       X = #{@direction.x * @velocity.x}"
+		console.log "       Y = #{@direction.y * @velocity.y}"
+		###
 		if @position.left > @pong.limit.left and @position.left < @pong.limit.right
 			@hitBorder()
 			@hitPlayer()
