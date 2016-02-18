@@ -1,7 +1,6 @@
 {
-	"pong": {
-		"loop_interval": 0
-	},
+	"background-color": "#000000",
+	"text-color": "#FFFFFF",
 	"keyboard": {
 		"space": 32,
 		"s": 83,
@@ -13,13 +12,20 @@
 	"player": {
 		"speed": 1,
 		"bot_speed": 5,
-		"start_height": 90,
-		"end_height": 50
+		"height": 20,
+		"height_max": 100,
+		"height_min": 50
 	},
 	"ball": {
+		"radius": 1,
+		"color": "#ffc520",
+		"speed": {
+			"x": 1,
+			"y": 1
+		},
 		"velocity": {
-			"x": 2,
-			"y": 2
+			"x": 50,
+			"y": 10
 		}
 	}
 }
