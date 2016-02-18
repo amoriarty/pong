@@ -1,12 +1,15 @@
-Config = require "./configuration.json"
-Server = require "./class/Server.class"
+Config = require "./conf.json"
+express = require "express"
+app = express()
 
-# Server Configuration
-app = new Server "#{Config.path}/html/pong.html"
-app.addStatic "js"
-app.addStatic "css"
+app.get "/", (req, res) ->
+	res.sendFile "#{Config.path}/client/index.html"
 
-# Add Bot Battle
-app.app.get "/botBattle", (req, res) ->
-	res.sendFile "#{Config.path}/html/botBattle.html"
-app.listen Config.port, "Server ready !"
+app.get "/conf", (req, res) ->
+	res.sendFile "#{Config.path}/client/conf.json"
+
+app.use "/js", express.static "#{Config.path}/client/coffee"
+app.use "/misc", express.static "#{Config.path}/client/misc"
+
+app.listen Config.port, ->
+	console.log "Server ready !"
