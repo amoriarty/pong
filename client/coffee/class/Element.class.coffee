@@ -1,2 +1,2 @@
 class Element
-	constructor: (@context, @position) ->
+	constructor: (@canvas, @name, @position) ->

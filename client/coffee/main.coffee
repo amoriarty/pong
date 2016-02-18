@@ -21,16 +21,4 @@ jQuery ->
 		canvas = new Canvas "pong"
 		canvas.setBackgroundColor conf["background-color"]
 
-		hero = new Player canvas.context, {
-			x: 0
-			y: 0
-			width: 10
-			height: 90
-		}
-		.draw()
-
-		#debug mouse
-		canvas.canvas.addEventListener "mousedown", (e) ->
-			console.log e.pageX
-			console.log e.pageY
-		, true
+		Hero = new Player canvas, "Hero", { x: 10, y: 75 }

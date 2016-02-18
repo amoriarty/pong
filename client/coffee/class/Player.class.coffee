@@ -1,4 +1,11 @@
 class Player extends Element
-	draw: ->
-		@context.fillStyle = "#FFFFFF"
-		@context.fillRect @position.x, @position.y, @position.width, @position.height
+	@canvas.drawRect @name, {
+		layer: true
+		name: @name
+		groups: ['player']
+		fillStyle: conf["player"]["color"]
+		x: 10
+		y: 75
+		height: conf["player"]["height"]
+		width: conf["player"]["width"]
+	}

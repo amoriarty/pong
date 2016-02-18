@@ -10,9 +10,11 @@
 		"ArrowDown": 40
 	},
 	"player": {
+		"color": "#FFFFFF",
 		"speed": 1,
 		"bot_speed": 5,
-		"height": 20,
+		"height": 50,
+		"width": 5,
 		"height_max": 100,
 		"height_min": 50
 	},
