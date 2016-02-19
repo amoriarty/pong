@@ -1,2 +1,6 @@
 class Element
-	constructor: (@canvas, @name, @position) ->
+	constructor: (@canvas, @name, @conf) ->
+		@position = {
+			height: @conf["height"]
+			width: @conf["width"]
+		}

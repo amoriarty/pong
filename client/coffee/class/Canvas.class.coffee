@@ -9,6 +9,3 @@ class Canvas
 			width: 600
 			height: 300
 		}
-
-	drawRect: (name, param) ->
-		@$pong.drawRect param

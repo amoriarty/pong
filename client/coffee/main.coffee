@@ -21,4 +21,5 @@ jQuery ->
 		canvas = new Canvas "pong"
 		canvas.setBackgroundColor conf["background-color"]
 
-		Hero = new Player canvas, "Hero", { x: 10, y: 75 }
+		Hero = new Player canvas.$pong, "Hero", conf["player"], 1
+		.draw()
