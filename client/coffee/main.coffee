@@ -20,6 +20,7 @@ jQuery ->
 	$.getJSON "/conf", (conf) ->
 		canvas = new Canvas "pong"
 		canvas.setBackgroundColor conf["background-color"]
+		canvas.drawSeparation conf["separation"]
 
 		Hero = new Player canvas.$pong, "Hero", conf["player"], 1
 		.draw()
