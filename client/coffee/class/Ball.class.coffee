@@ -18,10 +18,12 @@ class Ball extends Element
 			x: 150, y: 75
 		}
 
-	hit: (x, y, callback) ->
+	getCoor: ->
 		layer = @canvas.getLayer @name
-		if (x - layer.x) * (x - layer.x) + (y - layer.y) * (y - layer.y) > layer.radius * layer.radius then false
-		else callback()
+		{
+			x: if @direction.x < 0 then layer.x - layer.radius else layer.x + layer.radius
+			y: if @direction.y < 0 then layer.y - layer.radius else layer.y + layer.radius
+		}
 
 	hitBorder: (callback) ->
 		layer = @canvas.getLayer @name
