@@ -36,11 +36,12 @@
 		}
 	},
 	"ball": {
-		"radius": 1,
+		"radius": 4,
+		"width": 1,
 		"color": "#ffc520",
 		"speed": {
-			"x": 1,
-			"y": 1
+			"x": 0.4,
+			"y": 0.2
 		},
 		"velocity": {
 			"x": 50,

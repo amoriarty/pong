@@ -1,31 +1,24 @@
 jQuery ->
-	window.requestAnimFrame = ->
-		window.requestAnimationFrame ||
-		window.webkitRequestAnimationFrame ||
-		window.mozRequestAnimationFrame ||
-		window.oRequestAnimationFrame ||
-		window.msRequestAnimationFrame ||
-		(callback) ->
-				window.setTimeout(callback, 1000 / 60)
-
-	window.cancelRequestAnimFrame = ->
-		window.cancelAnimationFrame ||
-		window.webkitCancelRequestAnimationFrame ||
-		window.mozCancelRequestAnimationFrame ||
-		window.oCancelRequestAnimationFrame ||
-		window.msCancelRequestAnimationFrame ||
-		clearTimeout
-
-
 	$.getJSON "/conf", (conf) ->
 		canvas = new Canvas "pong"
 		canvas.setBackgroundColor conf["background-color"]
 		canvas.drawSeparation conf["separation"]
 
-		Hero = new Player canvas.$pong, "Hero", conf["player"], 1
-		Hero.draw()
-		Hero.setKeyboard "LEFT"
+		hero = new Player canvas.$pong, "hero", conf["player"], 1
+		hero.draw()
+		hero.setKeyboard "LEFT"
 
-		BadGuy = new Player canvas.$pong, "BadGuy", conf["player"], 4
-		BadGuy.draw()
-		BadGuy.setKeyboard "RIGHT"
+		bay_guy = new Player canvas.$pong, "bay_guy", conf["player"], 4
+		bay_guy.draw()
+		bay_guy.setKeyboard "RIGHT"
+
+		ball = new Ball canvas.$pong, "Ball", conf["ball"]
+		ball.draw()
+
+		setInterval =>
+			ball.move()
+			ball.hitBorder (border) =>
+				switch border
+					when "TOP", "BOTTOM" then ball.direction.y *= -1
+					when "LEFT", "RIGHT" then ball.direction.x *= -1
+		, 0
