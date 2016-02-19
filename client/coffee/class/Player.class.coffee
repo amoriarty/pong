@@ -14,11 +14,12 @@ class Player extends Element
 			fillStyle: @conf["color"]
 			x: @conf["place"][@place]["x"]
 			y: @conf["place"][@place]["y"]
-			height: @position.height
-			width: @position.width
+			height: @conf["height"]
+			width: @conf["width"]
 			}
 
 	setKeyboard: (panel) ->
+		@loop()
 		switch panel
 			when "LEFT"
 				$(document).keydown (touch) =>
@@ -45,11 +46,16 @@ class Player extends Element
 		switch direction
 			when "UP"
 				if layer.y - layer.height / 2 - speed >= 0
-					@canvas.setLayer @name, {
-						y: "-= #{speed}"
-					}
+					@canvas.animateLayer @name, { y: "-=#{speed}" }, 0
 			when "DOWN"
 				if layer.y + layer.height / 2 + speed <= 150
-					@canvas.setLayer @name, {
-						y: "+= #{speed}"
-					}
+					@canvas.animateLayer @name, { y: "+=#{speed}" }, 0
+
+	loop: ->
+		@loop_interval = setInterval =>
+			if @direction.up then @move "UP", @conf["speed"]
+			if @direction.down then @move "DOWN", @conf["speed"]
+		, 0
+
+	clearLoop: ->
+		clearInterval @loop_interval

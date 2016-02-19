@@ -11,8 +11,8 @@
 	},
 	"player": {
 		"color": "#FFFFFF",
-		"speed": 1,
-		"bot_speed": 5,
+		"speed": 0.3,
+		"bot_speed": 0.3,
 		"height": 40,
 		"width": 3,
 		"height_min": 25,

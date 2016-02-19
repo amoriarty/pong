@@ -8,8 +8,9 @@ class Canvas
 			name: "background"
 			fillStyle: color
 			x: 0, y: 0
-			width: 600
-			height: 300
+			width: 300
+			height: 150
+			fromCenter: false
 		}
 
 	drawSeparation: (conf) ->
@@ -17,7 +18,7 @@ class Canvas
 			layer: true
 			name: "filet"
 			fillStyle: conf["color"]
-			x: 150, y: 0
+			x: 150, y: 75
 			width: conf["width"]
-			height: 300
+			height: 150
 			}

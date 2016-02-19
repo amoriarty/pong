@@ -24,6 +24,8 @@ jQuery ->
 
 		Hero = new Player canvas.$pong, "Hero", conf["player"], 1
 		Hero.draw()
+		Hero.setKeyboard "LEFT"
 
 		BadGuy = new Player canvas.$pong, "BadGuy", conf["player"], 4
 		BadGuy.draw()
+		BadGuy.setKeyboard "RIGHT"
