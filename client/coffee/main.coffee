@@ -23,7 +23,7 @@ jQuery ->
 		canvas.drawSeparation conf["separation"]
 
 		Hero = new Player canvas.$pong, "Hero", conf["player"], 1
-		.draw()
+		Hero.draw()
 
 		BadGuy = new Player canvas.$pong, "BadGuy", conf["player"], 4
-		.draw()
+		BadGuy.draw()
