@@ -16,7 +16,17 @@
 		"height": 50,
 		"width": 3,
 		"height_max": 100,
-		"height_min": 50
+		"height_min": 50,
+		"place": {
+			"1": {
+				"x": 10,
+				"y": 75
+			},
+			"4": {
+				"x": 290,
+				"y": 75
+			}
+		}
 	},
 	"ball": {
 		"radius": 1,

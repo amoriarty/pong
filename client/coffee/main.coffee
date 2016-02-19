@@ -23,3 +23,6 @@ jQuery ->
 
 		Hero = new Player canvas.$pong, "Hero", conf["player"], 1
 		.draw()
+
+		BadGuy = new Player canvas.$pong, "BadGuy", conf["player"], 4
+		.draw()

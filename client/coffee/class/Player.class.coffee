@@ -8,8 +8,8 @@ class Player extends Element
 			name: @name
 			groups: ['player']
 			fillStyle: @conf["color"]
-			x: 10
-			y: 75
+			x: @conf["place"][@place]["x"]
+			y: @conf["place"][@place]["y"]
 			height: @position.height
 			width: @position.width
 			}
