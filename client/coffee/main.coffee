@@ -1,4 +1,3 @@
-#TODO COLLISSION BALLE / PLAYER A REVOIR
 #TODO CALLBACK FIN DE JEU
 #TODO MENU
 
@@ -26,8 +25,15 @@ jQuery ->
 				switch border
 					when "TOP", "BOTTOM" then ball.direction.y *= -1
 					when "LEFT", "RIGHT" then ball.direction.x *= -1
-			hero.hit ball.getCoor(), =>
-				ball.direction.x *= -1
-			bad_guy.hit ball.getCoor(), =>
-				ball.direction.x *= -1
+			hitPlayer([hero, bad_guy], ball)
 		, 0
+
+hitPlayer = (players, ball) =>
+	for player in players
+		coor = player.getCoor()
+		if player.hit ball.getCoor() \
+		or ball.hit coor \
+		or ball.hit {x: coor.x + coor.width, y: coor.y} \
+		or ball.hit {x: coor.x, y: coor.y + coor.height} \
+		or ball.hit {x: coor.x + coor.width, y: coor.y + coor.height} \
+		then ball.direction.x *= -1

@@ -25,6 +25,11 @@ class Ball extends Element
 			y: if @direction.y < 0 then layer.y - layer.radius else layer.y + layer.radius
 		}
 
+	hit: (coor) ->
+		layer = @canvas.getLayer @name
+		if (coor.x - layer.x) * (coor.x - layer.x) + (coor.y - layer.y) - (coor.y - layer.y) > layer.radius * layer.radius then return false
+		else return true
+
 	hitBorder: (callback) ->
 		layer = @canvas.getLayer @name
 		if layer.x - layer.radius <= 0 then callback "LEFT"

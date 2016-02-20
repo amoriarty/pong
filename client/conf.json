@@ -42,10 +42,6 @@
 		"speed": {
 			"x": 0.4,
 			"y": 0.2
-		},
-		"velocity": {
-			"x": 50,
-			"y": 10
 		}
 	},
 	"separation": {
