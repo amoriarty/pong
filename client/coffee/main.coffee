@@ -25,10 +25,11 @@ jQuery ->
 				switch border
 					when "TOP", "BOTTOM" then ball.direction.y *= -1
 					when "LEFT", "RIGHT" then ball.direction.x *= -1
-			hitPlayer([hero, bad_guy], ball)
+			hitPlayer [hero, bad_guy], ball, =>
+				ball.direction.x *= -1
 		, 0
 
-hitPlayer = (players, ball) =>
+hitPlayer = (players, ball, callback) =>
 	for player in players
 		coor = player.getCoor()
 		if player.hit ball.getCoor() \
@@ -36,4 +37,4 @@ hitPlayer = (players, ball) =>
 		or ball.hit {x: coor.x + coor.width, y: coor.y} \
 		or ball.hit {x: coor.x, y: coor.y + coor.height} \
 		or ball.hit {x: coor.x + coor.width, y: coor.y + coor.height} \
-		then ball.direction.x *= -1
+		then callback()
