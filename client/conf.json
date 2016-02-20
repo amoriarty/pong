@@ -47,5 +47,13 @@
 	"separation": {
 		"color": "#000000",
 		"width": 2.5
+	},
+	"text": {
+		"color": "#000000",
+		"width": 2,
+		"font_family": "Verdana, sans-serif",
+		"font_size": 21,
+		"win_text": "YOU ROCK",
+		"lose_text": "YOU SUCK"
 	}
 }

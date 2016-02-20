@@ -18,13 +18,14 @@ jQuery ->
 		bad_guy.draw()
 		bad_guy.setKeyboard "RIGHT"
 
+		middle_text = new Text canvas.$pong, "win", conf["text"]
 
-		setInterval =>
+		game_loop = setInterval =>
 			ball.move()
 			ball.hitBorder (border) =>
 				switch border
 					when "TOP", "BOTTOM" then ball.direction.y *= -1
-					when "LEFT", "RIGHT" then ball.direction.x *= -1
+					when "LEFT", "RIGHT" then stopGame border, game_loop, middle_text
 			hitPlayer [hero, bad_guy], ball, =>
 				ball.direction.x *= -1
 		, 0
@@ -38,3 +39,17 @@ hitPlayer = (players, ball, callback) =>
 		or ball.hit {x: coor.x, y: coor.y + coor.height} \
 		or ball.hit {x: coor.x + coor.width, y: coor.y + coor.height} \
 		then callback()
+
+stopGame = (border, game_loop, text) =>
+	clearInterval game_loop
+	switch border
+		when "LEFT" then lose text
+		when "RIGHT" then win text
+
+win = (text) =>
+	text.write text.conf["win_text"], { x: 75, y: 75 / 2 }
+	text.write text.conf["lose_text"], { x: 300 - 75, y: 75 / 2 }
+
+lose = (text) =>
+	text.write text.conf["win_text"], { x: 300 - 75, y: 75 / 2 }
+	text.write text.conf["lose_text"], { x: 75, y: 75 / 2 }
