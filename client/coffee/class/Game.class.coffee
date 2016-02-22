@@ -33,6 +33,7 @@ class Game
 					when "LEFT", "RIGHT" then @stopGame border, @game_loop, @lose_text
 			@hitPlayer @players, @ball, =>
 				@ball.direction.x *= -1
+				@ball.speed.x *= 1.05
 		, 0
 
 	hitPlayer: (players, ball, callback) =>
