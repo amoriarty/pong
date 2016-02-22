@@ -1,0 +1,1 @@
+class Bot extends Player
