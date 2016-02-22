@@ -48,8 +48,6 @@ stopGame = (border, game_loop, text) =>
 
 win = (text) =>
 	text.write text.conf["win_text"], { x: 75, y: 75 / 2 }
-	text.write text.conf["lose_text"], { x: 300 - 75, y: 75 / 2 }
 
 lose = (text) =>
-	text.write text.conf["win_text"], { x: 300 - 75, y: 75 / 2 }
 	text.write text.conf["lose_text"], { x: 75, y: 75 / 2 }
