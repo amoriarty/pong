@@ -14,9 +14,9 @@ jQuery ->
 		hero.draw()
 		hero.setKeyboard "LEFT"
 
-		bad_guy = new Player canvas.$pong, "bad_guy", conf["player"], 4
+		bad_guy = new Bot canvas.$pong, "bad_guy", conf["player"], 4
 		bad_guy.draw()
-		bad_guy.setKeyboard "RIGHT"
+		bad_guy.setBall ball
 
 		middle_text = new Text canvas.$pong, "win", conf["text"]
 
