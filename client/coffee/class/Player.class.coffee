@@ -59,3 +59,10 @@ class Player extends Element
 
 	clearLoop: ->
 		clearInterval @loop_interval
+
+	reduce: ->
+		layer = @canvas.getLayer @name
+		if layer.height - @conf["height_speed"] >= @conf["height_min"]
+			@canvas.animateLayer @name, {
+				height: "-=#{@conf["height_speed"]}"
+			}, 0

@@ -1,12 +1,8 @@
 class Ball extends Element
 	constructor: (canvas, name, conf) ->
 		super canvas, name, conf
-		@speed = @conf["speed"]
-		@velocity = @conf["velocity"]
-		@direction = {
-			x: if Math.random() < 0.5 then -1 else 1
-			y: if Math.random() < 0.5 then -(Math.random()) else Math.random()
-		}
+		@init()
+
 
 	draw: ->
 		@canvas.drawArc {
@@ -42,3 +38,16 @@ class Ball extends Element
 			x: "+=#{@direction.x * @speed.x}"
 			y: "+=#{@direction.y * @speed.y}"
 		}, 0
+
+	init: ->
+		@speed = @conf["speed"]
+		@velocity = @conf["velocity"]
+		@direction = {
+			x: if Math.random() < 0.5 then -1 else 1
+			y: if Math.random() < 0.5 then -(Math.random()) else Math.random()
+		}
+
+	moveToCenter: ->
+		@canvas.animateLayer @name, {
+			x: 150, y: 75
+		}

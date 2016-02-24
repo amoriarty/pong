@@ -17,3 +17,6 @@ class Element
 			height: layer.height
 			width: layer.width
 		}
+
+	remove: ->
+		@canvas.removeLayer @name

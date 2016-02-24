@@ -3,13 +3,17 @@ class Game
 		@canvas = new Canvas id
 		@canvas.setBackgroundColor @conf["background-color"]
 		@canvas.drawSeparation @conf["separation"]
+		@game_status = false
 		@players = []
 		@lose_text = new Text @canvas.$pong, 'lose_text', @conf["text"]
-		@newGame()
-
-	newGame: ->
 		@ball = new Ball @canvas.$pong, "Ball", @conf["ball"]
 		@ball.draw()
+
+	newGame: ->
+		@game_status = false
+		@ball.init()
+		@lose_text.remove()
+		@ball.moveToCenter()
 
 	setPlayer: (name, place, key) ->
 		player = new Player @canvas.$pong, name, @conf["player"], place
@@ -25,16 +29,20 @@ class Game
 			@players.push bot
 
 	startGame: ->
-		@game_loop = setInterval =>
-			@ball.move()
-			@ball.hitBorder (border) =>
-				switch border
-					when "TOP", "BOTTOM" then @ball.direction.y *= -1
-					when "LEFT", "RIGHT" then @stopGame border, @game_loop, @lose_text
-			@hitPlayer @players, @ball, =>
+		if @game_status is not true
+			@game_status = true
+			@game_loop = setInterval @gameLoop, 0
+
+	gameLoop: =>
+		@ball.move()
+		@ball.hitBorder (border) =>
+			switch border
+				when "TOP", "BOTTOM" then @ball.direction.y *= -1
+				when "LEFT", "RIGHT" then @stopGame border, @game_loop, @lose_text
+		@hitPlayer @players, @ball, (player) =>
 				@ball.direction.x *= -1
 				@ball.speed.x *= 1.05
-		, 0
+				player.reduce()
 
 	hitPlayer: (players, ball, callback) =>
 		for player in players
@@ -44,7 +52,7 @@ class Game
 			or ball.hit {x: coor.x + coor.width, y: coor.y} \
 			or ball.hit {x: coor.x, y: coor.y + coor.height} \
 			or ball.hit {x: coor.x + coor.width, y: coor.y + coor.height} \
-				then callback()
+				then callback player
 
 	stopGame: (border, game_loop, text) ->
 		clearInterval game_loop
@@ -54,6 +62,8 @@ class Game
 
 	lose: (text) ->
 		text.write text.conf["lose_text"], { x: 75, y: 75 / 2 }
+		text.click =>
+			@newGame()
 
 	win: (text) ->
 		text.write text.conf["win_text"], { x: 75, y: 75 / 2 }
