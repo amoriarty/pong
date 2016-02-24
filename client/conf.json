@@ -59,8 +59,8 @@
 		"width": 2,
 		"font_family": "Verdana, sans-serif",
 		"font_size": 21,
-		"win_text": "YOU ROCK",
-		"lose_text": "YOU SUCK"
+		"win_text": "YOU WIN",
+		"lose_text": "RESTART"
 	},
 	"chrono": {
 		"color": "#000000",
