@@ -41,7 +41,9 @@ class Game
 				when "LEFT", "RIGHT" then @stopGame border, @game_loop, @lose_text
 		@hitPlayer @players, @ball, (player) =>
 				@ball.direction.x *= -1
-				@ball.speed.x *= 1.05
+				if @ball.speed.x < @conf["ball"]["speed_max"]["x"]
+					@ball.speed.x *= @conf["ball"]["speed_update"]
+					console.log "UPDATE"
 				player.reduce()
 
 	hitPlayer: (players, ball, callback) =>
