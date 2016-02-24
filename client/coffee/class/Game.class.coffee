@@ -5,12 +5,16 @@ class Game
 		@canvas.drawSeparation @conf["separation"]
 		@game_status = false
 		@players = []
+		@chrono = new Chrono @canvas.$pong, "chrono", @conf["chrono"], { x: 225, y: 75 / 2 }
 		@lose_text = new Text @canvas.$pong, 'lose_text', @conf["text"]
 		@ball = new Ball @canvas.$pong, "Ball", @conf["ball"]
 		@ball.draw()
 
 	newGame: ->
 		@game_status = false
+		@chrono.start = false
+		@chrono.stop = false
+		@chrono.getDuration()
 		@ball.init()
 		@lose_text.remove()
 		@ball.moveToCenter()
@@ -31,9 +35,11 @@ class Game
 	startGame: ->
 		if @game_status is not true
 			@game_status = true
+			@chrono.startChrono()
 			@game_loop = setInterval @gameLoop, 0
 
 	gameLoop: =>
+		@chrono.getDuration()
 		@ball.move()
 		@ball.hitBorder (border) =>
 			switch border
@@ -41,9 +47,7 @@ class Game
 				when "LEFT", "RIGHT" then @stopGame border, @game_loop, @lose_text
 		@hitPlayer @players, @ball, (player) =>
 				@ball.direction.x *= -1
-				if @ball.speed.x < @conf["ball"]["speed_max"]["x"]
-					@ball.speed.x *= @conf["ball"]["speed_update"]
-					console.log "UPDATE"
+				if @ball.speed.x < @conf["ball"]["speed_max"]["x"] then @ball.speed.x *= @conf["ball"]["speed_update"]
 				player.reduce()
 
 	hitPlayer: (players, ball, callback) =>
@@ -57,6 +61,7 @@ class Game
 				then callback player
 
 	stopGame: (border, game_loop, text) ->
+		@chrono.stopChrono()
 		clearInterval game_loop
 		switch border
 			when "LEFT" then @lose text

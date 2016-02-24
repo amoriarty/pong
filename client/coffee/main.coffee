@@ -1,6 +1,7 @@
 #TODO MENU
 #TODO CHRONOMETRE
-
+#TODO MAKEFILE
+#TODO ONE REQUEST JS
 jQuery ->
 	$.getJSON "/conf", (conf) ->
 		game = new Game "pong", conf
