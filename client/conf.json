@@ -1,0 +1,60 @@
+{
+	"background-color": "#CC6600",
+	"text-color": "#FFFFFF",
+	"keyboard": {
+		"space": 32,
+		"s": 83,
+		"w": 87,
+		"z": 90,
+		"ArrowUp": 38,
+		"ArrowDown": 40
+	},
+	"player": {
+		"color": "#FFFFFF",
+		"speed": 0.3,
+		"bot_speed": 0.3,
+		"width": 3,
+		"height": 40,
+		"height_min": 30,
+		"height_speed": 0.5,
+		"place": {
+			"1": {
+				"x": 10,
+				"y": 75
+			},
+			"2": {
+				"x": 75,
+				"y": 75
+			},
+			"3": {
+				"x": 225,
+				"y": 75
+			},
+			"4": {
+				"x": 290,
+				"y": 75
+			}
+		}
+	},
+	"ball": {
+		"radius": 4,
+		"width": 1,
+		"color": "#ffc520",
+		"speed": {
+			"x": 0.4,
+			"y": 0.2
+		}
+	},
+	"separation": {
+		"color": "#000000",
+		"width": 2.5
+	},
+	"text": {
+		"color": "#000000",
+		"width": 2,
+		"font_family": "Verdana, sans-serif",
+		"font_size": 21,
+		"win_text": "YOU ROCK",
+		"lose_text": "YOU SUCK"
+	}
+}
