@@ -36,7 +36,7 @@ class Game
 		if @game_status is not true
 			@game_status = true
 			@chrono.startChrono()
-			@game_loop = setInterval @gameLoop, 0
+			@game_loop = requestAnimationFrame @gameLoop
 
 	gameLoop: =>
 		@chrono.getDuration()
@@ -49,6 +49,7 @@ class Game
 				@ball.direction.x *= -1
 				if @ball.speed.x < @conf["ball"]["speed_max"]["x"] then @ball.speed.x *= @conf["ball"]["speed_update"]
 				player.reduce()
+		requestAnimationFrame @gameLoop
 
 	hitPlayer: (players, ball, callback) =>
 		for player in players
@@ -62,7 +63,7 @@ class Game
 
 	stopGame: (border, game_loop, text) ->
 		@chrono.stopChrono()
-		clearInterval game_loop
+		window.cancelAnimationFrame game_loop
 		switch border
 			when "LEFT" then @lose text
 			when "RIGHT" then @win text
