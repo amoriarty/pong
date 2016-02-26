@@ -5,18 +5,19 @@ class Game
 		@canvas.drawSeparation @conf["separation"]
 		@game_status = false
 		@players = []
-		@chrono = new Chrono @canvas.$pong, "chrono", @conf["chrono"], { x: 225, y: 75 / 2 }
-		@lose_text = new Text @canvas.$pong, 'lose_text', @conf["text"]
+		@chrono = new Chrono "chrono"
+		@lose_text = new Text "lose"
+		@final_msg = $(".final_msg")
 		@ball = new Ball @canvas.$pong, "Ball", @conf["ball"]
 		@ball.draw()
 
 	newGame: ->
+		@final_msg.css "display", "none"
 		@game_status = false
 		@chrono.start = false
 		@chrono.stop = false
-		@chrono.getDuration()
 		@ball.init()
-		@lose_text.remove()
+		#@lose_text.remove()
 		@ball.moveToCenter()
 
 	setPlayer: (name, place, key, sound) ->
@@ -69,9 +70,9 @@ class Game
 			when "RIGHT" then @win @lose_text
 
 	lose: (text) ->
-		text.write text.conf["lose_text"], { x: 75, y: 75 / 2 }
-		text.click =>
-			@newGame()
+		text.element.text @conf["text"]["lose_text"]
+		@final_msg.css "display", "block"
 
 	win: (text) ->
-		text.write text.conf["win_text"], { x: 75, y: 75 / 2 }
+		text.element.text @conf["text"]["win_text"]
+		@final_msg.css "display", "block"

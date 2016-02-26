@@ -1,6 +1,6 @@
 class Chrono extends Text
-	constructor: (id, name, conf, @coor) ->
-		super id, name, conf
+	constructor: (id) ->
+		super id
 		@start = false
 		@stop = false
 
@@ -11,16 +11,12 @@ class Chrono extends Text
 		@stop = if not @stop then new Date().getTime()
 
 	getDuration: ->
-		if @start is false then @write "00:00:000", @coor
-		else
-			now = if not @stop then new Date().getTime() else @stop
-			diff = now - @start
-			diff = new Date diff
-			timer = {
-				milli: diff.getMilliseconds()
-				seconds: diff.getSeconds()
-				min: diff.getMinutes()
-			}
-			@canvas.setLayer @name, {
-				text: "Time #{timer.min}:#{timer.seconds}:#{timer.milli}"
-			}
+		now = if not @stop then new Date().getTime() else @stop
+		diff = now - @start
+		diff = new Date diff
+		timer = {
+			milli: diff.getMilliseconds()
+			seconds: diff.getSeconds()
+			min: diff.getMinutes()
+		}
+		@element.text "#{timer.min}:#{timer.seconds}:#{timer.milli}"
