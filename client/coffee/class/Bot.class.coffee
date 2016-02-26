@@ -19,15 +19,15 @@ class Bot extends Player
 			if layer.y < 75 then @move "DOWN", @conf["bot_speed"]
 
 	doub: (layer) =>
+		coor = @ball.getCoor()
 		if @ball.direction.x is 1
-			coor = @ball.getCoor()
 			switch @place
 				when 1, 3
-					if layer.y + layer.height / 2 < 75 and coor.y < 75
+					if layer.y + layer.height / 2 < 75 + 15
 						if coor.y < layer.y - layer.height / 4 then @move "UP", @conf["bot_speed"]
 						if coor.y > layer.y + layer.height / 4 then @move "DOWN", @conf["bot_speed"]
 				when 2, 4
-					if layer.y - layer.height / 2 > 75 and coor.y > 75
+					if layer.y - layer.height / 2 > 75 - 15
 						if coor.y < layer.y - layer.height / 4 then @move "UP", @conf["bot_speed"]
 						if coor.y > layer.y + layer.height / 4 then @move "DOWN", @conf["bot_speed"]
 		else

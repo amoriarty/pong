@@ -16,6 +16,7 @@ class Game
 		@game_status = false
 		@chrono.start = false
 		@chrono.stop = false
+		@ball.init()
 		@ball.moveToCenter()
 
 	setPlayer: (name, place, key, sound) ->
@@ -48,14 +49,16 @@ class Game
 
 
 	hitPlayer: (players, ball, callback) =>
+		ball_coor = ball.getCoor()
 		for player in players
 			coor = player.getCoor()
-			if player.hit ball.getCoor() \
-			or ball.hit coor \
-			or ball.hit {x: coor.x + coor.width, y: coor.y} \
-			or ball.hit {x: coor.x, y: coor.y + coor.height} \
-			or ball.hit {x: coor.x + coor.width, y: coor.y + coor.height} \
-				then callback player
+			if ball_coor.x > coor.x - 50 and ball_coor.x < coor.x + 50
+				if player.hit ball.getCoor() \
+				or ball.hit coor \
+				or ball.hit {x: coor.x + coor.width, y: coor.y} \
+				or ball.hit {x: coor.x, y: coor.y + coor.height} \
+				or ball.hit {x: coor.x + coor.width, y: coor.y + coor.height} \
+					then callback player
 
 	stopGame: (border) =>
 		@chrono.stopChrono()
