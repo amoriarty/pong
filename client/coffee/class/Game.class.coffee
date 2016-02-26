@@ -17,7 +17,6 @@ class Game
 		@chrono.start = false
 		@chrono.stop = false
 		@ball.init()
-		#@lose_text.remove()
 		@ball.moveToCenter()
 
 	setPlayer: (name, place, key, sound) ->
@@ -48,6 +47,12 @@ class Game
 				when "LEFT", "RIGHT" then @stopGame border
 		@hitPlayer @players, @ball, (player) =>
 				@ball.direction.x *= -1
+				random = Math.random() - 0.5
+				coor = @ball.getCoor()
+				player_coor = player.getCoor()
+				if @ball.direction.y > 0
+					@ball.direction.y = if coor.y > player_coor.y then random * -1 else random
+				else @ball.direction.y = if coor.y < player_coor.y then random * -1 else random
 				if @ball.speed.x < @conf["ball"]["speed_max"]["x"] then @ball.speed.x *= @conf["ball"]["speed_update"]
 				player.reduce()
 				player.sound.trigger("play")
