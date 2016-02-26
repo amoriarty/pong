@@ -11,7 +11,7 @@ class Chrono extends Text
 		@stop = if not @stop then new Date().getTime()
 
 	getDuration: ->
-		if @start is false then @write "Time 00:00:000", @coor
+		if @start is false then @write "00:00:000", @coor
 		else
 			now = if not @stop then new Date().getTime() else @stop
 			diff = now - @start

@@ -1,7 +1,8 @@
 #TODO MENU
-#TODO CHRONOMETRE
 #TODO MAKEFILE
 #TODO ONE REQUEST JS
+#TODO CONF POSITION TEXT (ALL ELEMENTS WILL BE BETTER)
+#TODO SOUNDS
 jQuery ->
 	$.getJSON "/conf", (conf) ->
 		game = new Game "pong", conf
