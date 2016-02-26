@@ -1,5 +1,5 @@
 class Game
-	constructor: (id, @conf) ->
+	constructor: (id, @conf, @double) ->
 		@canvas = new Canvas id
 		@canvas.setBackgroundColor @conf["background-color"]
 		@canvas.drawSeparation @conf["separation"]
@@ -16,18 +16,17 @@ class Game
 		@game_status = false
 		@chrono.start = false
 		@chrono.stop = false
-		@ball.init()
 		@ball.moveToCenter()
 
 	setPlayer: (name, place, key, sound) ->
-		player = new Player @canvas.$pong, name, @conf["player"], place, sound
+		player = new Player @canvas.$pong, name, @conf["player"], place, sound, @double
 		player.draw()
 		player.setKeyboard key
 		@players.push player
 
 	setBot: (name, place, sound) ->
 		if @ball
-			bot = new Bot @canvas.$pong, name, @conf["player"], place, sound
+			bot = new Bot @canvas.$pong, name, @conf["player"], place, sound, @double
 			bot.draw()
 			bot.setBall @ball
 			@players.push bot
@@ -45,17 +44,8 @@ class Game
 			switch border
 				when "TOP", "BOTTOM" then @ball.direction.y *= -1
 				when "LEFT", "RIGHT" then @stopGame border
-		@hitPlayer @players, @ball, (player) =>
-				@ball.direction.x *= -1
-				random = Math.random() - 0.5
-				coor = @ball.getCoor()
-				player_coor = player.getCoor()
-				if @ball.direction.y > 0
-					@ball.direction.y = if coor.y > player_coor.y then random * -1 else random
-				else @ball.direction.y = if coor.y < player_coor.y then random * -1 else random
-				if @ball.speed.x < @conf["ball"]["speed_max"]["x"] then @ball.speed.x *= @conf["ball"]["speed_update"]
-				player.reduce()
-				player.sound.trigger("play")
+		@hitPlayer @players, @ball, @ball.rebound
+
 
 	hitPlayer: (players, ball, callback) =>
 		for player in players

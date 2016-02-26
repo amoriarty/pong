@@ -1,5 +1,5 @@
 class Player extends Element
-	constructor: (canvas, name, conf, @place, sound) ->
+	constructor: (canvas, name, conf, @place, sound, @double) ->
 		super canvas, name, conf
 		@sound = $("##{sound}")
 		@direction = {
@@ -8,13 +8,19 @@ class Player extends Element
 		}
 
 	draw: ->
+		if @double is true
+			switch @place
+				when 1, 3 then y = 75 / 2
+				when 2, 4 then y = 75 + (75 / 2)
+		else
+			y = 75
 		@canvas.drawRect {
 			layer: true
 			name: @name
 			groups: ['player']
 			fillStyle: @conf["color"]
-			x: @conf["place"][@place]["x"]
-			y: @conf["place"][@place]["y"]
+			x: @conf["place"][@place]
+			y: y
 			height: @conf["height"]
 			width: @conf["width"]
 			}

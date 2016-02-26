@@ -3,7 +3,6 @@ class Ball extends Element
 		super canvas, name, conf
 		@init()
 
-
 	draw: ->
 		@canvas.drawArc {
 			layer: true
@@ -51,3 +50,15 @@ class Ball extends Element
 		@canvas.animateLayer @name, {
 			x: 150, y: 75
 		}
+
+	rebound: (player) =>
+		@direction.x *= -1
+		random = Math.random() - 0.5
+		coor = @getCoor()
+		player_coor = player.getCoor()
+		if @direction.y > 0
+			@direction.y = if coor.y > player_coor.y then random * -1 else random
+		else @direction.y = if coor.y < player_coor.y then random * -1 else random
+		if @speed.x < @conf["speed_max"]["x"] then @speed.x *= @conf["speed_update"]
+		player.reduce()
+		player.sound.trigger("play")

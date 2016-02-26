@@ -4,6 +4,12 @@ class Bot extends Player
 
 	loop: =>
 		layer = @canvas.getLayer @name
+		switch @double
+			when false then @simple layer
+			when true then @doub layer
+		requestAnimationFrame @loop
+
+	simple: (layer) =>
 		if @ball.direction.x is 1
 			coor = @ball.getCoor()
 			if coor.y < layer.y - layer.height / 4 then @move "UP", @conf["bot_speed"]
@@ -11,4 +17,22 @@ class Bot extends Player
 		else
 			if layer.y > 75 then @move "UP", @conf["bot_speed"]
 			if layer.y < 75 then @move "DOWN", @conf["bot_speed"]
-		requestAnimationFrame @loop
+
+	doub: (layer) =>
+		if @ball.direction.x is 1
+			coor = @ball.getCoor()
+			switch @place
+				when 1, 3
+					if layer.y + layer.height / 2 < 75 and coor.y < 75
+						if coor.y < layer.y - layer.height / 4 then @move "UP", @conf["bot_speed"]
+						if coor.y > layer.y + layer.height / 4 then @move "DOWN", @conf["bot_speed"]
+				when 2, 4
+					if layer.y - layer.height / 2 > 75 and coor.y > 75
+						if coor.y < layer.y - layer.height / 4 then @move "UP", @conf["bot_speed"]
+						if coor.y > layer.y + layer.height / 4 then @move "DOWN", @conf["bot_speed"]
+		else
+			switch @place
+				when 1, 3 then y = 75 / 2
+				when 2, 4 then y = 75 + (75 / 2)
+			if layer.y > y then @move "UP", @conf["bot_speed"]
+			if layer.y < y then @move "DOWN", @conf["bot_speed"]
