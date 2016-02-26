@@ -62,8 +62,8 @@ class Game
 				then callback player
 
 	stopGame: (border) =>
-		clearInterval @game_loop
 		@chrono.stopChrono()
+		clearInterval @game_loop
 		switch border
 			when "LEFT" then @lose @lose_text
 			when "RIGHT" then @win @lose_text

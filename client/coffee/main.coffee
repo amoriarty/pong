@@ -3,8 +3,8 @@
 #TODO ONE REQUEST JS
 #TODO CONF POSITION TEXT (ALL ELEMENTS WILL BE BETTER)
 #TODO SOUNDS
-#TODO RESTART WITH SPACE
 #TODO CHRONO EN DIV
+#TODO MEILLEURS DIRECTION DE BALLE
 jQuery ->
 	$.getJSON "/conf", (conf) ->
 		game = new Game "pong", conf
@@ -12,4 +12,7 @@ jQuery ->
 		game.setBot "bad_guy", 4, "ball01"
 		game.newGame()
 		$(document).keydown (t) =>
-			if t.keyCode is conf["keyboard"]["space"] and game.game_status is not true then game.startGame()
+			if t.keyCode is conf["keyboard"]["space"]
+				if game.game_status is not true then game.startGame()
+				else game.newGame()
+

@@ -60,7 +60,7 @@
 		"font_family": "Verdana, sans-serif",
 		"font_size": 21,
 		"win_text": "YOU WIN",
-		"lose_text": "RESTART"
+		"lose_text": "YOU LOSE"
 	},
 	"chrono": {
 		"color": "#000000",
