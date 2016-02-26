@@ -19,15 +19,15 @@ class Game
 		@lose_text.remove()
 		@ball.moveToCenter()
 
-	setPlayer: (name, place, key) ->
-		player = new Player @canvas.$pong, name, @conf["player"], place
+	setPlayer: (name, place, key, sound) ->
+		player = new Player @canvas.$pong, name, @conf["player"], place, sound
 		player.draw()
 		player.setKeyboard key
 		@players.push player
 
-	setBot: (name, place) ->
+	setBot: (name, place, sound) ->
 		if @ball
-			bot = new Bot @canvas.$pong, name, @conf["player"], place
+			bot = new Bot @canvas.$pong, name, @conf["player"], place, sound
 			bot.draw()
 			bot.setBall @ball
 			@players.push bot
@@ -49,6 +49,7 @@ class Game
 				@ball.direction.x *= -1
 				if @ball.speed.x < @conf["ball"]["speed_max"]["x"] then @ball.speed.x *= @conf["ball"]["speed_update"]
 				player.reduce()
+				player.sound.trigger("play")
 
 	hitPlayer: (players, ball, callback) =>
 		for player in players

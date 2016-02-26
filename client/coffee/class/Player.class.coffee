@@ -1,6 +1,7 @@
 class Player extends Element
-	constructor: (canvas, name, conf, @place) ->
+	constructor: (canvas, name, conf, @place, sound) ->
 		super canvas, name, conf
+		@sound = $("##{sound}")
 		@direction = {
 			up: false
 			down: false
