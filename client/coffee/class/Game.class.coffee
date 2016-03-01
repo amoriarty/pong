@@ -1,5 +1,5 @@
 class Game
-	constructor: (id, @conf, @double) ->
+	constructor: (id, @conf) ->
 		@canvas = new Canvas id
 		@canvas.setBackgroundColor @conf["background-color"]
 		@canvas.drawSeparation @conf["separation"]
@@ -10,6 +10,8 @@ class Game
 		@final_msg = $(".final_msg")
 		@ball = new Ball @canvas.$pong, "Ball", @conf["ball"]
 		@ball.draw()
+
+	setDouble: (@double) ->
 
 	newGame: ->
 		@final_msg.css "display", "none"
