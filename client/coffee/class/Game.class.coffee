@@ -38,7 +38,8 @@ class Game
 		if @game_status is not true
 			@game_status = true
 			@chrono.startChrono()
-			@game_loop = setInterval @gameLoop, 1000 / 60
+			#@game_loop = setInterval @gameLoop, 1000 / 60
+			@game_loop = requestAnimationFrame @gameLoop
 
 	gameLoop: =>
 		@chrono.getDuration()
@@ -48,6 +49,7 @@ class Game
 				when "TOP", "BOTTOM" then @ball.direction.y *= -1
 				when "LEFT", "RIGHT" then @stopGame border
 		@hitPlayer @players, @ball, @ball.rebound
+		if not @chrono.stop then @game_loop = requestAnimationFrame @gameLoop
 
 
 	hitPlayer: (players, ball, callback) =>
@@ -64,7 +66,6 @@ class Game
 
 	stopGame: (border) =>
 		@chrono.stopChrono()
-		clearInterval @game_loop
 		switch border
 			when "LEFT" then @lose @lose_text
 			when "RIGHT" then @win @lose_text
