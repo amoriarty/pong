@@ -31,8 +31,15 @@
 		<div class="final_msg" id="lose"></div>
 		<div class="final_msg" id="restart">Appuyer sur espace pour réessayer.</div>
 		<div id="menu">
-			<div class="btn" id="first-btn">M'entrainer en simple</div>
-			<div class="btn" id="second-btn">Le Match en double</div>
+			<select id="mode">
+				<option value="simple">M'entrainer en simple</optionv>
+				<option value="double">Le Match en double</option>
+			</select><br />
+			<select id="players">
+				<option value="one">Un joueur.</option>
+				<option value="two">Deux joueurs.</option>
+			</select><br />
+			<input type="submit" value="Go !">
 		</div>
 	</div>
 </body>

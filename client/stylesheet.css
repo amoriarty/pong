@@ -15,21 +15,10 @@
 	display: none;
 }
 
-.btn {
+#menu {
 	position: absolute;
-	font-size: 20px;
-	border: 1px black solid;
-	border-radius: 10px;
-}
-
-#first-btn {
 	top: 50px;
-	left: 75px;
-}
-
-#second-btn {
-	top: 100px;
-	left: 75px;
+	left: 100px;
 }
 
 #restart {
