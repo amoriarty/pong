@@ -20,6 +20,24 @@ class Bot extends Player
 
 	doub: (layer) =>
 		coor = @ball.getCoor()
+		if coor.x < layer.x
+			switch @place
+				when 1, 2
+					if coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
+					if coor.y < layer.y then @move "UP", @conf["bot_speed"]
+				when 3, 4
+					if coor.y < layer.y then @move "UP", @conf["bot_speed"]
+					if coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
+		else
+			switch @place
+				when 1, 2
+					if coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
+					if coor.y < layer.y then @move "UP", @conf["bot_speed"]
+				when 3, 4
+					if coor.y > layer.y then @move "UP", @conf["bot_speed"]
+					if coor.y < layer.y then @move "DOWN", @conf["bot_speed"]
+
+		###
 		if @ball.direction.x is 1
 			switch @place
 				when 1, 3
@@ -36,3 +54,4 @@ class Bot extends Player
 				when 2, 4 then y = 75 + (75 / 2)
 			if layer.y > y then @move "UP", @conf["bot_speed"]
 			if layer.y < y then @move "DOWN", @conf["bot_speed"]
+		###

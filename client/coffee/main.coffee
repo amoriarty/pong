@@ -1,7 +1,7 @@
-#TODO MENU (SI POSSIBLE SANS SOURIS)
 #TODO MAKEFILE
 #TODO ONE REQUEST JS
 #TODO IA DOUBLE
+#TODO EXPLICATION
 jQuery ->
 	$.getJSON "/conf", (conf) ->
 		game = new Game "pong", conf

@@ -63,9 +63,6 @@ class Player extends Element
 		if @direction.down then @move "DOWN", @conf["speed"]
 		requestAnimationFrame @loop
 
-	clearLoop: ->
-		window.cancelAnimationFrame @loop_interval
-
 	reduce: ->
 		layer = @canvas.getLayer @name
 		if layer.height - @conf["height_speed"] >= @conf["height_min"]
