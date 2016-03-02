@@ -51,7 +51,7 @@ class Ball extends Element
 			x: 150, y: 75
 		}
 
-	rebound: (player) =>
+	rebound: (player, sound) =>
 		@direction.x *= -1
 		random = Math.random() - 0.5
 		coor = @getCoor()
@@ -61,4 +61,4 @@ class Ball extends Element
 		else @direction.y = if coor.y < player_coor.y then random * -1 else random
 		if @speed.x < @conf["speed_max"]["x"] then @speed.x *= @conf["speed_update"]
 		player.reduce()
-		player.sound.trigger("play")
+		if sound is "on" then player.sound.trigger("play")

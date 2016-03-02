@@ -1,7 +1,6 @@
 #TODO MENU (SI POSSIBLE SANS SOURIS)
 #TODO MAKEFILE
 #TODO ONE REQUEST JS
-#TODO SON ON/OFF
 #TODO IA DOUBLE
 jQuery ->
 	$.getJSON "/conf", (conf) ->
@@ -10,6 +9,8 @@ jQuery ->
 		$("#menu").submit (e) =>
 			e.preventDefault()
 			$("#menu").fadeOut 200
+			game.setSound $("#sound option:selected").val()
+
 			if $("#mode option:selected").val() is "simple"
 				game.setDouble false
 				if $("#players option:selected").val() is "two" then game.setPlayer "player_four", 4, "RIGHT", "ball01"

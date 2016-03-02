@@ -13,6 +13,8 @@ class Game
 
 	setDouble: (@double) ->
 
+	setSound: (@sound) ->
+
 	newGame: ->
 		@final_msg.css "display", "none"
 		@game_status = false
@@ -38,7 +40,6 @@ class Game
 		if @game_status is not true
 			@game_status = true
 			@chrono.startChrono()
-			#@game_loop = setInterval @gameLoop, 1000 / 60
 			@game_loop = requestAnimationFrame @gameLoop
 
 	gameLoop: =>
@@ -62,7 +63,7 @@ class Game
 				or ball.hit {x: coor.x + coor.width, y: coor.y} \
 				or ball.hit {x: coor.x, y: coor.y + coor.height} \
 				or ball.hit {x: coor.x + coor.width, y: coor.y + coor.height} \
-					then callback player
+					then callback player, @sound
 
 	stopGame: (border) =>
 		@chrono.stopChrono()
