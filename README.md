@@ -11,4 +11,4 @@
 5. `./node_modules/.bin/coffee index.coffee`
 6. Configurer les détails du jeu dans le fichier client/conf.json
 
-Vous pouvez aussi configurer le dossier client avec un autre serveur, mais n'oublié de compiler les fichiers coffee script du client.
+Vous pouvez aussi configurer le dossier client avec un autre serveur, mais n'oublié de compiler ses fichiers coffee script.
