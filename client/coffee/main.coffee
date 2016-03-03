@@ -1,8 +1,3 @@
-#TODO MAKEFILE
-#TODO ONE REQUEST JS
-#TODO README
-#TODO EXPLICATION
-#TODO HISTOIRE DE GAGNER LOSE AND TWO PLAYER
 jQuery ->
 	$.getJSON "/conf", (conf) ->
 		game = new Game "pong", conf
