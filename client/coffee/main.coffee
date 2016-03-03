@@ -25,6 +25,4 @@ jQuery ->
 			game.newGame()
 			$(document).keydown (t) =>
 				if t.keyCode is conf["keyboard"]["space"]
-					#TODO J'AVAIS QUELQUE CHOSE A FAIRE ICI
-					if game.game_status is not true then game.startGame()
-					else game.newGame()
+					game.startGame()

@@ -41,6 +41,9 @@ class Game
 			@game_status = true
 			@chrono.startChrono()
 			@game_loop = requestAnimationFrame @gameLoop
+		else
+			@newGame()
+
 
 	gameLoop: =>
 		@chrono.getDuration()
