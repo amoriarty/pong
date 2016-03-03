@@ -1,7 +1,8 @@
 #TODO MAKEFILE
 #TODO ONE REQUEST JS
 #TODO IA DOUBLE
-#TODO EXPLICATION
+#TODO README
+#TODO BALL REBOUND
 jQuery ->
 	$.getJSON "/conf", (conf) ->
 		game = new Game "pong", conf

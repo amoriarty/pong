@@ -22,16 +22,16 @@ class Bot extends Player
 		coor = @ball.getCoor()
 		if coor.x < layer.x
 			switch @place
-				when 1, 2
-					if coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
+				when 2
+					if layer.y + layer.height / 2 < 75 and coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
 					if coor.y < layer.y then @move "UP", @conf["bot_speed"]
 				when 3, 4
 					if coor.y < layer.y then @move "UP", @conf["bot_speed"]
 					if coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
 		else
 			switch @place
-				when 1, 2
-					if coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
+				when 2
+					if layer.y + layer.height / 2 < 75 and coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
 					if coor.y < layer.y then @move "UP", @conf["bot_speed"]
 				when 3, 4
 					if coor.y > layer.y then @move "UP", @conf["bot_speed"]
