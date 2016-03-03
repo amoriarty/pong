@@ -53,10 +53,10 @@ class Ball extends Element
 
 	rebound: (player, sound) =>
 		@direction.x *= -1
-		random = Math.random()
 		coor = @getCoor()
 		player_coor = player.getCoor()
-		if random < 0.5 then @direction.y *= -1
+		@direction.y = Math.random()
+		if Math.random() < 0.5 then @direction.y *= -1
 		if @speed.x < @conf["speed_max"]["x"] then @speed.x *= @conf["speed_update"]
 		player.reduce()
 		if sound is "on" then player.sound.trigger("play")

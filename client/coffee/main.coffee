@@ -2,6 +2,7 @@
 #TODO ONE REQUEST JS
 #TODO README
 #TODO HISTOIRE DE GAGNER LOSE AND TWO PLAYER
+#TODO CONF BOT MARGE !
 jQuery ->
 	$.getJSON "/conf", (conf) ->
 		game = new Game "pong", conf
