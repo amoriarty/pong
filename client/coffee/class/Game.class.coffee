@@ -15,6 +15,10 @@ class Game
 
 	setSound: (@sound) ->
 
+	setTwoPlayers: (@two_player) ->
+		if @two_player is true
+			@win_text = new Text "win"
+
 	newGame: ->
 		@final_msg.css "display", "none"
 		@game_status = false
@@ -78,8 +82,10 @@ class Game
 
 	lose: (text) ->
 		text.element.text @conf["text"]["lose_text"]
+		if @two_player is true then @win_text.element.text @conf["text"]["win_text"]
 		@final_msg.css "display", "block"
 
 	win: (text) ->
 		text.element.text @conf["text"]["win_text"]
+		if @two_player is true then @win_text.element.text @conf["text"]["lose_text"]
 		@final_msg.css "display", "block"

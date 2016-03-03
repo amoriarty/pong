@@ -14,6 +14,7 @@ jQuery ->
 			if $("#mode option:selected").val() is "simple"
 				game.setDouble false
 				if $("#players option:selected").val() is "two"
+					game.setTwoPlayers true
 					game.setPlayer "player_one", 1, "LEFT", "ball00"
 					game.setPlayer "player_four", 4, "RIGHT", "ball01"
 				else
