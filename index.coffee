@@ -5,12 +5,12 @@ app = express()
 app.get "/", (req, res) ->
 	res.sendFile "#{Config.path}/client/index.html"
 
-app.get "/conf", (req, res) ->
+app.get "/conf.json", (req, res) ->
 	res.sendFile "#{Config.path}/client/conf.json"
-app.get "/style", (req, res) ->
+app.get "/stylesheet.css", (req, res) ->
 	res.sendFile "#{Config.path}/client/stylesheet.css"
 
-app.use "/js", express.static "#{Config.path}/client/coffee"
+app.use "/coffee", express.static "#{Config.path}/client/coffee"
 app.use "/misc", express.static "#{Config.path}/client/misc"
 
 app.listen Config.port, ->

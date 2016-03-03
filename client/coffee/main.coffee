@@ -1,5 +1,5 @@
 jQuery ->
-	$.getJSON "/conf", (conf) ->
+	$.getJSON "/conf.json", (conf) ->
 		game = new Game "pong", conf
 		$("#menu").submit (e) =>
 			e.preventDefault()
