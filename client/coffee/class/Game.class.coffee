@@ -38,10 +38,11 @@ class Game
 
 	startGame: ->
 		if @game_status is not true
+			@in_game = true
 			@game_status = true
 			@chrono.startChrono()
 			@game_loop = requestAnimationFrame @gameLoop
-		else
+		else if @in_game is not true
 			@newGame()
 
 
@@ -70,6 +71,7 @@ class Game
 
 	stopGame: (border) =>
 		@chrono.stopChrono()
+		@in_game = false
 		switch border
 			when "LEFT" then @lose @lose_text
 			when "RIGHT" then @win @lose_text
