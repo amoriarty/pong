@@ -23,10 +23,10 @@ class Bot extends Player
 		if coor.x < layer.x
 			switch @place
 				when 3
-					if layer.y - layer.height / 2 > 75 and coor.y < layer.y then @move "UP", @conf["bot_speed"]
+					if layer.y - layer.height / 2 > 75 - @conf["bot_marge"] and coor.y < layer.y then @move "UP", @conf["bot_speed"]
 					if coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
 				when 4
-					if layer.y + layer.height / 2 < 75 and coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
+					if layer.y + layer.height / 2 < 75 + @conf["bot_marge"] and coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
 					if coor.y < layer.y then @move "UP", @conf["bot_speed"]
 		else
 			switch @place
@@ -34,8 +34,8 @@ class Bot extends Player
 					if coor.y > layer.y then @move "DOWN", @conf["bot_speed"]
 					if coor.y < layer.y then @move "UP", @conf["bot_speed"]
 				when 3
-					if layer.y - layer.height / 2 > 75 and coor.y > layer.y then @move "UP", @conf["bot_speed"]
+					if layer.y - layer.height / 2 > 75 - @conf["bot_marge"] and coor.y > layer.y then @move "UP", @conf["bot_speed"]
 					if coor.y < layer.y then @move "DOWN", @conf["bot_speed"]
 				when 4
-					if layer.y + layer.height / 2 < 75 and coor.y > layer.y then @move "UP", @conf["bot_speed"]
+					if layer.y + layer.height / 2 < 75 + @conf["bot_marge"] and coor.y > layer.y then @move "UP", @conf["bot_speed"]
 					if coor.y < layer.y then @move "DOWN", @conf["bot_speed"]

@@ -13,6 +13,7 @@
 		"color": "#FFFFFF",
 		"speed": 1,
 		"bot_speed": 1,
+	  	"bot_marge": 5,
 		"width": 3,
 		"height": 40,
 		"height_min": 30,
