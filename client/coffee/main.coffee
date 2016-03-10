@@ -4,7 +4,14 @@ jQuery ->
 		$("#menu").submit (e) =>
 			e.preventDefault()
 			$("#menu").fadeOut 200
-			game.setSound $("#sound option:selected").val()
+			game.setSound "off"
+			$("#sound").click =>
+				if $("#sound").attr("src").toString() is "/misc/off.png"
+					$("#sound").attr "src", "/misc/on.png"
+					game.setSound "on"
+				else
+					$("#sound").attr "src", "/misc/off.png"
+					game.setSound "off"
 
 			if $("#mode option:selected").val() is "simple"
 				game.setDouble false

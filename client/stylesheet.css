@@ -26,6 +26,12 @@
 	left: 100px;
 }
 
+#sound {
+	position: absolute;
+	top: 350px;
+	left: 675px;
+}
+
 #restart {
 	top: 100px;
 	left: 40px;
