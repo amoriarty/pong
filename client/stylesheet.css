@@ -42,6 +42,12 @@
 	left: 675px;
 }
 
+#menu_ico {
+	position: absolute;
+	top: 350px;
+	left: 625px;
+}
+
 #restart {
 	top: 100px;
 	left: 40px;
