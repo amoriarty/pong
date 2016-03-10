@@ -32,17 +32,16 @@
 		<div class="final_msg" id="win"></div>
 		<div class="final_msg" id="restart">Appuyer sur espace pour réessayer.</div>
 		<img src="/misc/off.png" id="sound"/>
-		<form id="menu">
-			<select id="mode">
-				<option value="simple">M'entrainer en simple.</optionv>
-				<option value="double">Le Match en double.</option>
-			</select><br />
-			<select id="players">
-				<option value="one">Un joueur.</option>
-				<option value="two">Deux joueurs.</option>
-			</select><br />
-			<input type="submit" value="Go !">
-		</form>
+		<div class="menu" id="simple">
+			<div>Simple.</div><br />
+			<div id="simple_one" class="btn">Un joueur.</div>
+			<div id="simple_two" class="btn">Deux joueurs.</div>
+		</div>
+		<div class="menu" id="double">
+			<div>Double.</div><br />
+			<div id="double_one" class="btn">Un joueur.</div>
+			<div id="double_two" class="btn">Deux joueurs.</div>
+		</div>
 	</div>
 </body>
 </html>

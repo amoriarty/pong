@@ -20,10 +20,20 @@
 	left: 400px;
 }
 
-#menu {
+.btn {
+	border: 1px solid black;
+}
+
+#simple {
 	position: absolute;
-	top: 50px;
+	top: 100px;
 	left: 100px;
+}
+
+#double {
+	position: absolute;
+	top: 100px;
+	left: 500px;
 }
 
 #sound {
