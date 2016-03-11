@@ -50,6 +50,8 @@ class Player extends Element
 
 	move: (direction, speed) ->
 		layer = @canvas.getLayer @name
+		if !layer
+			return
 		switch direction
 			when "UP"
 				if layer.y - layer.height / 2 - speed >= 0

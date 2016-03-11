@@ -4,10 +4,11 @@ class Bot extends Player
 
 	loop: =>
 		layer = @canvas.getLayer @name
-		switch @double
-			when false then @simple layer
-			when true then @doub layer
-		requestAnimationFrame @loop
+		if layer
+			switch @double
+				when false then @simple layer
+				when true then @doub layer
+			requestAnimationFrame @loop
 
 	simple: (layer) =>
 		if @ball.direction.x is 1

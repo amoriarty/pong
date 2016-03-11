@@ -11,6 +11,13 @@ class Game
 		@ball = new Ball @canvas.$pong, "Ball", @conf["ball"]
 		@ball.draw()
 
+	unsetEverything: ->
+		@stopGame null
+		for player in @players
+			@canvas.$pong.removeLayer player.name
+			player = null
+		@players = []
+
 	setDouble: (@double) ->
 
 	setSound: (@sound) ->
