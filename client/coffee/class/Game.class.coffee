@@ -13,6 +13,7 @@ class Game
 
 	unsetEverything: ->
 		@stopGame null
+		@final_msg.css "display", "none"
 		$(document).unbind "keydown"
 		$(document).unbind "keyup"
 		for player in @players
