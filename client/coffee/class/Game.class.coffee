@@ -13,6 +13,8 @@ class Game
 
 	unsetEverything: ->
 		@stopGame null
+		$(document).unbind "keydown"
+		$(document).unbind "keyup"
 		for player in @players
 			@canvas.$pong.removeLayer player.name
 			player = null
@@ -33,6 +35,9 @@ class Game
 		@chrono.stop = false
 		@ball.init()
 		@ball.moveToCenter()
+		$(document).keydown (t) =>
+			if t.keyCode is @conf["keyboard"]["space"]
+				@startGame()
 
 	setPlayer: (name, place, key, sound) ->
 		player = new Player @canvas.$pong, name, @conf["player"], place, sound, @double

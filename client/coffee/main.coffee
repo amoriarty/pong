@@ -43,7 +43,3 @@ jQuery ->
 		$("#menu-ico").click =>
 			game.unsetEverything()
 			$(".menu").fadeIn 200
-
-		$(document).keydown (t) =>
-			if t.keyCode is conf["keyboard"]["space"]
-				game.startGame()
